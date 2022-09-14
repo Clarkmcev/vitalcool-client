@@ -24,7 +24,7 @@ import Basket from "./components/Basket";
 import Footer from "./components/Footer";
 import logo from "./img/logo-main.png";
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 function App() {
   const navigate = useNavigate();

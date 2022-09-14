@@ -4,7 +4,7 @@ import uuid from 'react-uuid';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 function Order() {
   const { user, basket, setBasket, setAllOrders, allOrders } = useContext(AuthContext);
