@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Margin DEMO'; /*a name to be used later*/
+    src: url("../public/fonts/Margin\ DEMO.otf"); /*URL to font*/
+  }
+
+@layer components {
+    .sidebar-icon {
+        @apply relative
+        hover:text-fourthy
+        transition-all duration-200
+        mx-6 py-8
+        /* hover:underline
+        underline-offset-8
+        decoration-aqua
+        focus:bg-fourthy */
+    }
+
+    .flex-arrow1 {
+        @apply flex flex-wrap justify-center
+      }
+
+      .flex-arrow2 {
+        @apply flex flex-wrap justify-center
+      }
+
+    .home-container {
+        @apply relative bg-ternary
+    }
+
+    .logo2 {
+        @apply relative bg-primary
+    }
+
+    .container-home {
+      @apply flex flex-wrap flex-col justify-center m-auto text-center
+    }
+
+    .home-1 {
+        @apply bg-opacity-5 bg-alcool bg-cover my-0 h-56 text-primary relative
+    }
+
+    .home-2 {
+        @apply flex flex-wrap justify-between mx-10
+    }
+
+    .row {
+        @apply w-56 py-6
+    }
+
+    .img-home {
+        @apply opacity-30
+    }
+
+    .butt {
+        @apply bg-primary hover:bg-primary text-ternary hover:text-fourthy py-2 px-4 text-center  hover:w-52
+        rounded-3xl
+        transition-all duration-500 my-2 w-48 m-auto
+    }
+
+    .butt-admin {
+        @apply bg-ternary text-primary hover:border-aqua  py-2 px-4 text-center border-2 border-none
+        rounded-3xl hover:rounded-xl
+        transition-all duration-200
+    }
+
+    .butt-delete {
+        @apply bg-primary hover:bg-primary text-ternary py-2 px-4 text-center 
+        rounded-2xl hover:rounded-xl
+        transition-all duration-200
+    }
+
+    
+    .butt-remove {
+        @apply bg-primary hover:bg-primary text-ternary hover:text-fourthy py-2 px-4 text-center 
+        rounded-2xl 
+        transition-all duration-200
+    }
+
+    .butt-order {
+        @apply bg-ternary hover:bg-fourthy text-primary py-2 px-4 text-center 
+        rounded-3xl hover:border-aqua 
+        transition-all duration-200 no-underline
+    }
+
+    .butt-oder-and-pay {
+        @apply bg-secondary hover:bg-primary text-fourthy hover:text-fourthy py-2 px-4 text-center 
+        rounded-3xl my-5 w-96
+        transition-all duration-200
+    }
+
+    .form-button {
+        @apply bg-primary hover:rounded-xl text-ternary hover:text-fourthy py-2 px-4 border-2 border-none text-center 
+        rounded-3xl hover:border-aqua my-5 w-44
+        transition-all duration-200
+    }
+
+    .form-button-choose {
+        @apply bg-ternary text-primary py-2 px-4 text-center hover:rounded-xl focus:rounded-xl
+        rounded-3xl hover:border-aqua my-2 w-44
+        transition-all duration-200 active:bg-ternary focus:ring focus:ring-aqua block
+    }
+
+    .butt-details {
+        @apply bg-primary hover:bg-primary text-ternary hover:text-fourthy py-1 px-4 text-center 
+        rounded-2xl hover:rounded-xl 
+        transition-all duration-200
+    }
+
+    .subnavbar {
+        @apply flex flex-wrap ml-10 my-5
+    }
+
+    .vl {
+        @apply border-l-primary border-l-2 h-64 w-0
+      }
+
+      .vl2 {
+        @apply border-l-primary border-l-2 h-44 w-0 my-20
+      }
+
+
+
+    .sub-icon {
+        @apply
+        relative
+        transition-all duration-200
+        hover:underline
+        underline-offset-8
+        decoration-primary
+    }
+
+    .basket  {
+        @apply absolute right-10 my-7
+    }
+
+    .cross {
+        @apply absolute top-5 right-16
+    }
+
+    .home-butt  {
+        @apply m-7 hover:text-fourthy
+    }
+    
+
+    .orders-in-basket {
+        @apply absolute mt-9
+    }
+
+    .basket-container {
+        @apply bg-primary text-ternary
+    }
+
+    .orders-in-basket {
+        @apply absolute right-20 my-6
+    }
+
+    .sub-icon {
+        @apply mr-10 text-primary
+    }
+
+    .content-navbar {
+        @apply mx-10
+    }
+
+    .bar {
+        @apply h-2 bg-ternary
+    }
+
+    .bar2 {
+        @apply h-2 bg-primary
+    }
+
+    .logo {
+        @apply h-10 m-3 
+        
+    }
+
+    .logo-main {
+        @apply bg-auto
+    }
+
+    .img-product {
+        @apply w-80
+        hover:bg-texture m-auto my-2 transition-all duration-500
+    }
+
+    .card {
+        @apply bg-fourthy px-4 rounded-full
+    }
+
+    .app {
+        @apply bg-ternary
+    }
+
+    .navbar {
+        @apply text-ternary text-xl bg-gradient-to-b from-primary to-secondary
+    }
+
+    .title {
+        @apply text-xl my-10 text-primary mx-10
+    }
+
+    .title-home {
+        @apply text-xl py-5 text-primary mx-10 font-bold
+    }
+
+    .inside {
+        @apply p-10 text-primary
+    }
+
+    .container {
+        @apply flex flex-wrap
+    }
+
+    .order-row {
+        @apply block font-bold md:text-right mb-1 md:mb-0 pr-4
+    }
+
+    .order-row-order {
+        @apply flex flex-wrap justify-between my-2 text-fourthy py-2
+    }
+
+    .basket-container {
+        @apply px-5 bg-secondary right-0 text-fourthy rounded-bl-xl border-l-4 border-b-4 border-primary
+    }
+
+    .order-container {
+        @apply px-5 bg-ternary right-0 text-primary
+    }
+
+    .order-container-pay {
+        @apply px-10 right-0 text-primary
+    }
+
+    .order-row {
+        @apply flex flex-wrap justify-evenly my-2
+    }
+
+    /* LOGIN AND FORM */
+
+    .form-label {
+        @apply text-sm mb-2 w-11
+    }
+    
+    .inside-container {
+        @apply bg-secondary rounded-2xl  text-ternary mx-10 py-5 mb-5
+    }
+
+    .inside-container-home {
+        @apply bg-secondary rounded-2xl  text-ternary py-5 mb-5
+    }
+
+    
+
+    .form {
+        @apply bg-secondary mx-10 py-5 rounded-2xl mb-5 text-primary
+    }
+
+    .input {
+        @apply focus:outline-none 
+        focus:border-aqua bg-ternary my-2
+    }
+
+    .order-form {
+        @apply bg-secondary
+    }
+}
