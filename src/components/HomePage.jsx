@@ -36,14 +36,16 @@ function HomePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, "500")
   }, [])
-
-  // setTimeout(setShowBasket(true),2000)
 
   return (
     <div> 
-      {isLoading && <LoadingSpinner/>}
-          {user && 
+      {isLoading && <div className="my-60"><LoadingSpinner/></div>}
+      {user && !isLoading ?   <>
       <div className="container-home">
           <div className="home-container">
             <div className="home-1">
@@ -115,8 +117,9 @@ function HomePage() {
                 </div>
               </div>
       </div>
-    </div>}
-      {!user ?  
+    </div>
+    </> : null}
+      {!user && !isLoading ?  
       <div className="wrapper">
         <div className="flex flex-wrap flex-col relative">
           <img src={logo} alt="logo" className="logo-main relative mx-auto"/>

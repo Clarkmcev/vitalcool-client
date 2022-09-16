@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from '../context/auth.context';
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from 'react';
+import LoadingSpinner from './LoadingSpinner';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
@@ -12,12 +13,13 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser, isLoading, setIsLoading } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   // console.log(email,password)
   const loginUser = (e) => {
+    setIsLoading(true)
     e.preventDefault();
     const requestBody = { email, password };
     axios
@@ -29,6 +31,7 @@ function Login() {
         navigate("/");
       })
       .catch((error) => {
+        setIsLoading(false)
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
@@ -44,7 +47,8 @@ function Login() {
         Login
       </div>
     <div className="form">
-      <form className="text-center" onSubmit={loginUser}>
+    {isLoading && <LoadingSpinner/>}
+    {!isLoading && <form className="text-center" onSubmit={loginUser}>
         <div> 
           <div className="">
             <label className=" text-fourthy">Email</label>
@@ -60,7 +64,8 @@ function Login() {
         <button className="my-5 form-button" type="submit">Login</button>
         <div className= "text-ternary">No account yet? <Link to="/signup" className="hover:underline">Register</Link> here</div>
         { errorMessage && <p className="error-message">{errorMessage}</p> }
-      </form>
+      </form>}
+      
     </div>
     </>
   )

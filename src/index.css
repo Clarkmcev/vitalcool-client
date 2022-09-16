@@ -21,7 +21,7 @@
     }
 
     .spinner {
-        @apply mx-auto my-96
+        @apply mx-auto my-28
     }
 
     .flex-arrow1 {
