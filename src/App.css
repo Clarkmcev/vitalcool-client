@@ -7,6 +7,15 @@
   pointer-events: none;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-top: auto;
+}
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -59,11 +68,6 @@ input {
   border-top: 20px solid #E0D98C;
 }
 
-
-body {
-  background:aquamarine;
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
@@ -92,6 +96,7 @@ ul {
 footer {
   background-color: #F7A76C;
   color: #C3FF99;
+  margin-top:auto
 }
 
 .ft-main {
