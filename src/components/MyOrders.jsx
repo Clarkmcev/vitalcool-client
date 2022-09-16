@@ -36,6 +36,7 @@ function MyOrders() {
       setShowContent(!showContent)
     }
 
+    console.log(myOrders.length)
 
     if (!user) {
       return <div className="order-container-pay">Loading...</div>
@@ -44,15 +45,20 @@ function MyOrders() {
       return <div className="order-container-pay">You have no orders</div>
     }
 
-  return (
+  return (<>
     <div className="inside-container">
       <div className="order-container-pay">
+        <div className="order-row-order bg-primary px-5 rounded-t-3xl m-b-0 ">
+          <div>Number</div>
+          <div>Total</div>
+          <div>Timestamps</div>
+          <div className="w-60"></div>
+        </div>
           {myOrders.elem.map((order) => {
-              return <><div key={uuid()} className="order-row-order">
+              return <><hr/>
+              <div key={uuid()} className="order-row-order px-5">
                         <h1 className="text-primary">Order {order.orderId}</h1>
-                        <div>Total : {formatter.format(order.totalPrice)}</div>
-                        {/* <div>{order.user.address}</div>
-                        <div>{order.user.town}</div> */}
+                        <div>{formatter.format(order.totalPrice)}</div>
                         <p className="text-ternary">Purchased at {order.updatedAt}</p>
                         <button className="butt-delete" onClick={()=> {showContentFunction()}}>Details</button>
                         </div>
@@ -65,6 +71,7 @@ function MyOrders() {
           })}
       </div>
     </div>
+    </>
   )
 }
 

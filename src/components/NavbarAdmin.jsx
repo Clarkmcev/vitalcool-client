@@ -1,19 +1,31 @@
 import React from 'react'
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 
 function NavbarAdmin() {
+  let activeStyle = {
+    textDecoration: "underline",
+  };
+
+  let activeClassName = "underline";
+
   return (
     <>
     <div className="subnavbar">
       <div>
-        <NavBarButtonStyle2 className="content-navbar" icon={<Link to="products">Products</Link>}/>
+        <NavBarButtonStyle2 className="content-navbar" icon={<NavLink to="products" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Products</NavLink>}/>
       </div>
       <div>
-      <NavBarButtonStyle2 className="content-navbar" icon={<Link to="new-product">New product</Link>}/>
+      <NavBarButtonStyle2 className="content-navbar" icon={<NavLink to="new-product" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>New product</NavLink>}/>
       </div>
       <div>
-      <NavBarButtonStyle2 className="content-navbar" icon={<Link to="orders">Orders</Link>}/>
+      <NavBarButtonStyle2 className="content-navbar" icon={<NavLink to="orders" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Orders</NavLink>}/>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import { NavLink, useNavigate, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function NavbarAccount() {
@@ -11,20 +11,33 @@ function NavbarAccount() {
     navigate("/");
   }
 
+  let activeStyle = {
+    textDecoration: "underline",
+  };
+
+  let activeClassName = "underline";
+
+
   return (
     <>
     <div className="subnavbar">
         <div>
-          <NavBarButtonStyle2 icon={<Link to="orders">Orders</Link>}/>
+          <NavBarButtonStyle2 icon={<NavLink  to="orders" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Orders</NavLink>}/>
         </div>
         <div>
-        <NavBarButtonStyle2 icon={<Link to="details">Details</Link>}/>
+        <NavBarButtonStyle2 icon={<NavLink to="details" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Details</NavLink>}/>
         </div>
         <div>
-        <NavBarButtonStyle2 icon={<Link to="payments">Payments</Link>}/>
+        <NavBarButtonStyle2 icon={<NavLink to="payments" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Payments</NavLink>}/>
         </div>
-        <div>
-        <NavBarButtonStyle2 icon={<button onClick={logOutUserAccount}>Logout</button>}/>
+        <div className="absolute right-0 top-48">
+        <NavBarButtonStyle2 icon={<button className="butt-admin" onClick={logOutUserAccount}>Logout</button>}/>
         </div>
     </div>
     <Outlet/>

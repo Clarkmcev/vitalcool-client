@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from "../context/auth.context";
 import uuid from 'react-uuid';
+import LoadingSpinner from './LoadingSpinner';
 
 
 function BeverageList() {
-    const { user, basket, setBasket, beverage, isLoggedIn } = useContext(AuthContext); 
+    const { user, basket, setBasket, beverage, isLoggedIn, isLoading, setBeverage, searchField, setSearchField } = useContext(AuthContext);
+    const [filter, setFilter] = useState('Soft')
 
       const addBeverageToBasket = (idUser, elem) => {
         setBasket([...basket,elem])
@@ -15,7 +17,14 @@ function BeverageList() {
     currency: "EUR",
   });
 
+  // const bevCopy = [...beverage];
   const [isHovering, setIsHovering] = useState(false);
+
+  const searchFunction = (event) => {
+    //convert input text to lower case
+    var lowerCase = event.toLowerCase();
+    setSearchField(lowerCase);
+    }
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -25,14 +34,29 @@ function BeverageList() {
     setIsHovering(false);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <div className="title">
         Shop
       </div>
+      {isLoading && <LoadingSpinner/>}
+      {!isLoading &&
         <div className="inside-container bg-secondary">
-          <div className="flex flex-wrap justify-evenly mx-10">
-              {beverage.map((elem) => 
+              <div className="filter-section">
+                <input className="input search w-96 text-primary" placeholder='Search ...' value={searchField} onChange={(event) => searchFunction(event.target.value)}/>
+                <select value={filter} onChange={(e)=>setFilter(e.target.value)}>
+                  <option value="Soft">Soft drinks</option>
+                  <option value="Liquor">Liquor & Spirits</option>
+                  <option value="Undistilled">Undistilled</option>
+                  </select>
+              </div>
+              <hr className="bg-primary mx-10"/>
+          <div className="flex flex-wrap justify-evenly m-10">
+              {beverage.filter((elem) => elem.name.toLowerCase().includes(searchField)).map((elem) => 
                   <div key={uuid()} >
                       <img src={elem.imageUrl} alt="beverage" className={isHovering ? 'img-product card' : 'img-product card'} onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}/>
@@ -47,7 +71,7 @@ function BeverageList() {
                   </div>
               )}
           </div>
-    </div>
+    </div>}
     </>
   )
 }

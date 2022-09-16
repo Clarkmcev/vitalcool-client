@@ -22,13 +22,19 @@ import MyPayments from "./components/MyPayments";
 import MyDetails from "./components/MyDetails";
 import Basket from "./components/Basket";
 import Footer from "./components/Footer";
-import logo from "./img/logo-main.png";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 function App() {
   const navigate = useNavigate();
-  const { beverage, setBeverage, showBasket } = useContext(AuthContext);
+  const {
+    beverage,
+    setBeverage,
+    showBasket,
+    user,
+    errorMessage,
+    setErrorMessage,
+  } = useContext(AuthContext);
 
   const addNewUser = (e, newUser) => {
     e.preventDefault();
@@ -39,6 +45,8 @@ function App() {
       })
       .catch((error) => {
         console.log(error);
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
       });
     navigate("/signup");
   };
@@ -58,43 +66,45 @@ function App() {
   };
 
   return (
-    <div className="m-0 app">
-      <Navbar />
-      {showBasket && (
-        <div>
-          <Basket />
-        </div>
-      )}
-      <div className="bar"></div>
-      <Routes>
-        <Route path="/account/myorders" element={<MyOrders />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<Signup addNewUser={addNewUser} />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/drinks" element={<BeverageList />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/user/order/success" element={<SuccessPayment />} />
-        <Route path="/logout" element={<Logout />} />
+    <div className="container-full">
+      <div className="app">
+        <Navbar />
+        {showBasket && (
+          <div>
+            <Basket />
+          </div>
+        )}
 
-        <Route path="account" element={<Account />}>
-          <Route index element={<MyOrders />} />
-          <Route path="orders" element={<MyOrders />} />
-          <Route path="details" element={<MyDetails />} />
-          <Route path="payments" element={<MyPayments />} />
-          <Route path="logout" />
-        </Route>
-        <Route path="admin" element={<Admin />}>
-          <Route index element={<BeverageListManagement />} />
-          <Route path="products" element={<BeverageListManagement />} />
-          <Route
-            path="new-product"
-            element={<BeverageForm addNewBeverage={addNewBeverage} />}
-          />
-          <Route path="orders" element={<OrderList />} />
-        </Route>
-      </Routes>
-      <div className="bar"></div>
+        <Routes>
+          <Route path="/account/myorders" element={<MyOrders />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/signup" element={<Signup addNewUser={addNewUser} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/drinks" element={<BeverageList />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/user/order/success" element={<SuccessPayment />} />
+          <Route path="/logout" element={<Logout />} />
+
+          <Route path="account" element={<Account />}>
+            <Route index element={<MyOrders />} />
+            <Route path="orders" element={<MyOrders />} />
+            <Route path="details" element={<MyDetails />} />
+            <Route path="payments" element={<MyPayments />} />
+            <Route path="logout" />
+          </Route>
+          <Route path="admin" element={<Admin />}>
+            <Route index element={<BeverageListManagement />} />
+            <Route path="products" element={<BeverageListManagement />} />
+            <Route
+              path="new-product"
+              element={<BeverageForm addNewBeverage={addNewBeverage} />}
+            />
+            <Route path="orders" element={<OrderList />} />
+          </Route>
+        </Routes>
+        <div className="bar"></div>
+      </div>
       <Footer />
     </div>
   );

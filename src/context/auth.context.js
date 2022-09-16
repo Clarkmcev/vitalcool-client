@@ -14,6 +14,8 @@ function AuthProviderWrapper(props) {
   const [allOrders, setAllOrders] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
   const [showBasket, setShowBasket] = useState(false);
+  const [searchField, setSearchField] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
@@ -21,6 +23,7 @@ function AuthProviderWrapper(props) {
 
   const authenticateUser = () => {
     const storedToken = localStorage.getItem("authToken");
+    setIsLoading(true);
     if (storedToken) {
       axios
         .get(`${API_URL}/auth/verify`, {
@@ -41,7 +44,6 @@ function AuthProviderWrapper(props) {
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
-      console.log(user);
     }
   };
 
@@ -56,12 +58,14 @@ function AuthProviderWrapper(props) {
 
   const getAllBeverage = () => {
     const storedToken = localStorage.getItem("authToken");
+    setIsLoading(true);
     axios
       .get(`${API_URL}/auth/drinks`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
         setBeverage(response.data);
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   };
@@ -86,6 +90,7 @@ function AuthProviderWrapper(props) {
       value={{
         isLoggedIn,
         isLoading,
+        setIsLoading,
         user,
         storeToken,
         authenticateUser,
@@ -103,6 +108,10 @@ function AuthProviderWrapper(props) {
         setImageUrl,
         showBasket,
         setShowBasket,
+        searchField,
+        setSearchField,
+        errorMessage,
+        setErrorMessage,
       }}
     >
       {props.children}

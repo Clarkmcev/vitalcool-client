@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Basket from './Basket';
 import { FaShoppingBasket, FaGlassMartiniAlt } from 'react-icons/fa';
@@ -23,39 +23,47 @@ function Navbar() {
     console.log(showBasket)
   }
 
+  let activeStyle = {
+    color: "#C3FF99",
+    textDecoration: 'none'
+  };
+
+  // let activeClassName = "underline";
+
   return (
     <div className="flex navbar">
-      {/* <button onMouseOver={LogoShining} onMouseOut={LogoShiningOff} onClick={() => navigate("/")}> */}
       <button className="home-butt" onMouseOver={LogoShining} onMouseOut={LogoShiningOff} onClick={() => navigate("/")}>
         <FaGlassMartiniAlt size='2rem'/>
-      {/* <img src={logoImage} alt="logo" className="logo mx-10"/> */}
       </button>
+      <div>
+      <NavBarButtonStyle1 icon={<NavLink  to="/drinks" style={({ isActive }) =>
+              isActive ? activeStyle : { textDecoration: 'none' }
+            }>Shop</NavLink>}/>
+      </div>
       {/* <div>
-        <NavBarButtonStyle1 icon={<Link to="/">Home</Link>}/>
+      <NavBarButtonStyle1 icon={<NavLink to="/drinks" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>About</NavLink>}/>
       </div> */}
-      <div>
-      <NavBarButtonStyle1 icon={<Link to="/drinks">Shop</Link>}/>
-      </div>
-
-      <div>
-      <NavBarButtonStyle1 icon={<Link to="/drinks">About</Link>}/>
-      </div>
 
    {!isLoggedIn && 
    <>
-   <NavBarButtonStyle1 icon={<Link to="/signup">Signup</Link>}/>
-   <NavBarButtonStyle1 icon={<Link to="/login">Login</Link>}/>
+   <NavBarButtonStyle1 icon={<NavLink to="/signup" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Signup</NavLink>}/>
+   <NavBarButtonStyle1 icon={<NavLink to="/login" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Login</NavLink>}/>
    
     </>}
-
-    {isLoggedIn ? <NavBarButtonStyle1 icon={<Link to="/admin">Admin</Link>}/> : null}
-    {isLoggedIn ? <NavBarButtonStyle1 icon={<Link to="/account">My Account</Link>}/> : null}
-    {/* {basket.length !== 0 && <><NavBarButtonStyle1 icon={basket.length}/></>} */}
+    {isLoggedIn ? <NavBarButtonStyle1 icon={<NavLink to="/admin" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>Admin</NavLink>}/> : null}
+    {isLoggedIn ? <NavBarButtonStyle1 icon={<NavLink to="/account" style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>My Account</NavLink>}/> : null}
     {user &&  <button className="basket flex flex-wrap hover:text-fourthy" onClick={(e) => showBasketFunction()}><FaShoppingBasket size='2rem'/></button>}
-
     <div className="orders-in-basket">{basket.length === 0 ? null : <div>({basket.length})</div>} </div>
-
-    {/* {user && <BasketStyle icon={<FaShoppingBasket width="200"/>} basket={<Basket/>}/>} */}
   </div>
   )
 }
@@ -65,11 +73,5 @@ const NavBarButtonStyle1 = ({icon}) => (
     {icon}
   </div>
 );
-
-// const BasketStyle = ({basket, icon}) => (
-//   <div className="basket">
-//     {basket}{icon}
-//   </div>
-// )
 
 export default Navbar;

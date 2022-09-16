@@ -8,6 +8,7 @@ module.exports = {
       backgroundImage: {
         alcool: "url('img/alcool-bar-1.png')",
         texture: "url('img/background.png')",
+        drinks: "url('img/alcool-drinks.png')",
       },
     },
     colors: {

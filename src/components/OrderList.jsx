@@ -5,7 +5,6 @@ import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
-
 function OrderList() {
     const { allOrders, setAllOrders } = useContext(AuthContext);
     const [showContent, setShowContent] = useState(false)
@@ -40,14 +39,21 @@ function OrderList() {
   return (
     <div className="inside-container">
         <div className="order-container-pay">
+        <div className="order-row-order bg-primary px-5 rounded-t-3xl m-b-0 ">
+          <div>Number</div>
+          <div>Total</div>
+          <div>User</div>
+          <div>Timestamps</div>
+          <div className="w-60"></div>
+        </div>
         {allOrders.found.map((order) => {
             return <div key={uuid()} className="order-row-order">
               <div className="text-primary">Order {order.orderId}</div>
-              <div>Total :{formatter.format(order.totalPrice)}</div>
+              <div className="text-ternary">{formatter.format(order.totalPrice)}</div>
               {/* <div>{order.user.address}</div>
               <div>{order.user.town}</div> */}
-              <div>By {order.user.firstName} {order.user.lastName}</div>
-              <div>Purchased at {order.updatedAt}</div>
+              <div className="text-ternary">By {order.user.firstName} {order.user.lastName}</div>
+              <div className="text-ternary">Purchased at {order.updatedAt}</div>
               <button className="butt-details" onClick={()=>showContentOrder(order._id)}>Details</button>
                     </div>
         })}

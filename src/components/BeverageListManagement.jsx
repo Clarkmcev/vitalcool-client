@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import uuid from 'react-uuid';
@@ -33,6 +33,10 @@ function BeverageListManagement() {
           })
           .catch((error) => console.log(error));
       };
+
+      useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
   return (
     <div className="inside-container">

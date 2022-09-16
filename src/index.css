@@ -13,10 +13,15 @@
         hover:text-fourthy
         transition-all duration-200
         mx-6 py-8
-        /* hover:underline
+        /* no-underline */
+        hover:underline
         underline-offset-8
         decoration-aqua
-        focus:bg-fourthy */
+        focus:bg-fourthy
+    }
+
+    .spinner {
+        @apply mx-auto my-96
     }
 
     .flex-arrow1 {
@@ -32,19 +37,33 @@
     }
 
     .logo2 {
-        @apply relative bg-primary
+        @apply relative bg-primary py-10
     }
+
 
     .container-home {
       @apply flex flex-wrap flex-col justify-center m-auto text-center
+    } 
+
+    .home-1-bis {
+        @apply bg-opacity-5 bg-drinks bg-contain my-0 h-56 text-primary relative
     }
 
     .home-1 {
-        @apply bg-opacity-5 bg-alcool bg-cover my-0 h-56 text-primary relative
+        @apply bg-opacity-5 bg-alcool bg-cover my-0 h-28 text-primary relative
     }
+
+    .catch {
+        @apply py-8 text-5xl text-primary font-thin
+    }
+
 
     .home-2 {
         @apply flex flex-wrap justify-between mx-10
+    }
+
+    .since {
+        @apply relative left-2/4 w-2/12 
     }
 
     .row {
@@ -62,7 +81,7 @@
     }
 
     .butt-admin {
-        @apply bg-ternary text-primary hover:border-aqua  py-2 px-4 text-center border-2 border-none
+        @apply bg-ternary text-primary hover:bg-primary hover:text-ternary  py-2 px-4 text-center border-2 border-none
         rounded-3xl hover:rounded-xl
         transition-all duration-200
     }
@@ -127,8 +146,7 @@
     .sub-icon {
         @apply
         relative
-        transition-all duration-200
-        hover:underline
+        transition-all duration-500
         underline-offset-8
         decoration-primary
     }
@@ -175,12 +193,12 @@
     }
 
     .logo {
-        @apply h-10 m-3 
+        @apply h-10 m-3
         
     }
 
     .logo-main {
-        @apply bg-auto
+        @apply bg-auto w-9/12
     }
 
     .img-product {
@@ -189,15 +207,16 @@
     }
 
     .card {
-        @apply bg-fourthy px-4 rounded-full
+        @apply bg-fourthy px-4 rounded-r-full rounded-tl-full rounded-bl-3xl border-r-primary border-r-8 border-l-ternary border-l-8  
+        transition-all duration-500 hover:rotate-6
     }
 
     .app {
         @apply bg-ternary
     }
-
+ 
     .navbar {
-        @apply text-ternary text-xl bg-gradient-to-b from-primary to-secondary
+        @apply text-ternary text-xl bg-gradient-to-b from-primary to-secondary w-full
     }
 
     .title {
@@ -205,7 +224,7 @@
     }
 
     .title-home {
-        @apply text-xl py-5 text-primary mx-10 font-bold
+        @apply text-3xl py-5 text-primary mx-10 font-semibold
     }
 
     .inside {
@@ -247,23 +266,41 @@
     }
     
     .inside-container {
-        @apply bg-secondary rounded-2xl  text-ternary mx-10 py-5 mb-5
+        @apply bg-secondary rounded-2xl  text-ternary mx-10 py-5 mb-5 shadow-md
+    }
+
+    .inside-container-home1 {
+        @apply bg-ternary rounded-3xl  text-primary p-5 mb-5 text-center w-auto border-t-secondary  border-t-8 border-r-8  border-r-secondary shadow-md
     }
 
     .inside-container-home {
-        @apply bg-secondary rounded-2xl  text-ternary py-5 mb-5
+        @apply bg-secondary rounded-2xl  text-ternary py-5 mb-5 shadow-md
     }
 
-    
+    input {
+        @apply border-2 border-primary placeholder-primary focus:outline-none 
+        focus:border-aqua bg-ternary my-2 
+    }
+
+    select {
+        @apply border-2 border-primary placeholder-primary  focus:border-aqua bg-ternary my-2 mx-10 rounded-2xl text-primary p-2
+    }
+
+    .search {
+        @apply mx-10
+    }
+
+    .filter-section {
+        @apply flex flex-wrap justify-between
+    }
 
     .form {
-        @apply bg-secondary mx-10 py-5 rounded-2xl mb-5 text-primary
+        @apply bg-secondary mx-10 py-5 rounded-2xl mb-5 text-primary shadow-md will-change-auto
     }
 
-    .input {
-        @apply focus:outline-none 
-        focus:border-aqua bg-ternary my-2
-    }
+    /* .form2 {
+        @apply bg-secondary py-5 rounded-2xl mb-5 text-primary shadow-md min-h-full overflow-hidden
+    } */
 
     .order-form {
         @apply bg-secondary

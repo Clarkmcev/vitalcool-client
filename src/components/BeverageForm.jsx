@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import { Navigate } from 'react-router-dom';
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
@@ -39,6 +39,10 @@ function BeverageForm({addNewBeverage}) {
           })
           .catch(err => console.log("Error while uploading the file: ", err));
       };
+
+      useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
   return (
     <div className="form">

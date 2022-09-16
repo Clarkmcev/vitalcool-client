@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import axios from "axios";
 import { AuthContext } from '../context/auth.context';
 import { useNavigate, Link } from "react-router-dom";
+import { useEffect } from 'react';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
@@ -34,6 +35,10 @@ function Login() {
       });
   };
 
+  useEffect(() => {
+    setErrorMessage(null)
+  },[email, password])
+
   return (
     <>
       <div className="title">
@@ -55,6 +60,7 @@ function Login() {
         </div>
         <button className="my-5 form-button" type="submit">Login</button>
         <div className= "text-ternary">No account yet? <Link to="/signup" className="hover:underline">Register</Link> here</div>
+        { errorMessage && <p className="error-message">{errorMessage}</p> }
       </form>
     </div>
     </>

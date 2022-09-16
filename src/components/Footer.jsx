@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, useNavigate } from "react-router-dom";
 
 function Footer() {
   return (
@@ -7,27 +8,24 @@ function Footer() {
     <div className="ft-main-item">
       <h2 className="ft-title">About</h2>
       <ul>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Careers</a></li>
+        <li><Link to="drinks">Shop</Link></li>
+        <li><Link to="about">Our story</Link></li>
+        <li><Link to="*">Careers</Link></li>
+        <li><Link to="">Services</Link></li>
       </ul>
     </div>
     <div className="ft-main-item">
       <h2 className="ft-title">Resources</h2>
       <ul>
-        <li><a href="#">Docs</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">eBooks</a></li>
-        <li><a href="#">Webinars</a></li>
+        <li><Link to="drinks">Docs</Link></li>
+        <li><Link to="drinks">Shop</Link></li>
       </ul>
     </div>
     <div className="ft-main-item">
       <h2 className="ft-title">Contact</h2>
       <ul>
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Contact us</a></li>
+        <li><Link to="">Help</Link></li>
+        <li><Link to="">Contact us</Link></li>
       </ul>
     </div>
     <div class="ft-main-item">
@@ -41,18 +39,18 @@ function Footer() {
   </section>
   <section class="ft-social">
     <ul class="ft-social-list">
-      <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-      <li><a href="#"><i class="fab fa-github"></i></a></li>
-      <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-      <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+      <li><i class="fab fa-facebook"></i></li>
+      <li><i class="fab fa-twitter"></i></li>
+      <li><i class="fab fa-instagram"></i></li>
+      <li><i class="fab fa-github"></i></li>
+      <li><i class="fab fa-linkedin"></i></li>
+      <li><i class="fab fa-youtube"></i></li>
     </ul>
   </section>
   <section className="ft-legal">
     <ul className="ft-legal-list">
-      <li><a href="#">Terms &amp; Conditions</a></li>
-      <li><a href="#">Privacy Policy</a></li>
+      <li><Link to="">Terms &amp; Conditions</Link></li>
+      <li><Link to="">Privacy Policy</Link></li>
       <li>&copy; 2022 Copyright Vitalcool Inc.</li>
     </ul>
   </section>
