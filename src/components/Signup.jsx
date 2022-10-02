@@ -30,9 +30,9 @@ function Signup({addNewUser}) {
   return (
     <>
       <div className="title">My account</div>
-    <div className='form'>
+    <div className='form w-7/12'>
     <form onSubmit={(e)=>{addNewUser(e,newUser)}}>
-      <div className="flex flex-wrap justify-center">
+      <div className="signup">
         <div className="mb-5">
               <div className="title mx-20">User information</div>
               <div className='mx-20'>

@@ -45,10 +45,10 @@ function BeverageForm({addNewBeverage}) {
       }, [])
 
   return (
-    <div className="form">
+    <div className="form w-10/12">
         <form className="m-auto" onSubmit={(e)=>addNewBeverage(e, newBeverage)} >
-        <div className="flex flex-wrap">
-            <div className='mx-20'>
+        <div className="flex flex-wrap justify-evenly">
+            <div >
             <div>
                     <div>
                         <label className=" text-fourthy">Product name</label>
@@ -66,8 +66,8 @@ function BeverageForm({addNewBeverage}) {
                     </div>
                 </div>
             </div>
-            <div className="vl"></div>
-            <div className='mx-20'>
+            {/* <div className="vl"></div> */}
+            <div>
             {newBeverage.type === "Soft" && 
                         <div>
                             <div>
@@ -97,7 +97,7 @@ function BeverageForm({addNewBeverage}) {
             {newBeverage.type === "Undistilled" && 
                                     <div>
                                         <div>
-                                            <label>Type</label>
+                                            <label className=" text-fourthy">Type</label>
                                         </div>
                                         <select name="undistilledType" onChange={handleChange}>
                                             <option value="Beer">Beer</option>
@@ -122,12 +122,15 @@ function BeverageForm({addNewBeverage}) {
             </div>
             <div>
                 <div>
-                    <input className="input" type="file" name="imageUrl" onChange={(e)=>{handleFileUpload(e)}}></input>
+                    <label className=" text-fourthy">Image upload</label>
+                </div>
+                <div>
+                    <input className="w-60" type="file" name="imageUrl" onChange={(e)=>{handleFileUpload(e)}}></input>
                 </div>
             </div>
             </div>
         </div>
-        <div className="mx-20">
+        <div className="text-center">
             <button className="form-button" type="submit">Upload</button>
         </div>
         </form>

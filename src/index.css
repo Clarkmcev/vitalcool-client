@@ -277,9 +277,11 @@
         @apply bg-secondary rounded-2xl  text-ternary py-5 mb-5 shadow-md
     }
 
+
+
     input {
         @apply border-2 border-primary placeholder-primary focus:outline-none 
-        focus:border-aqua bg-ternary my-2 
+        focus:border-aqua bg-ternary my-2 w-60
     }
 
     select {
@@ -295,7 +297,11 @@
     }
 
     .form {
-        @apply bg-secondary mx-10 py-5 rounded-2xl mb-5 text-primary shadow-md will-change-auto
+        @apply bg-secondary mx-auto w-min px-10 py-5 rounded-2xl mb-5 text-primary shadow-md will-change-auto
+    }
+
+    .signup {
+        @apply flex flex-wrap justify-center
     }
 
     /* .form2 {

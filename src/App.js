@@ -22,6 +22,7 @@ import MyPayments from "./components/MyPayments";
 import MyDetails from "./components/MyDetails";
 import Basket from "./components/Basket";
 import Footer from "./components/Footer";
+import SuccessSignup from "./components/SuccessSignup";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
@@ -41,12 +42,14 @@ function App() {
     axios
       .post(`${API_URL}/auth/signup`, newUser)
       .then((response) => {
-        navigate("/login");
+        navigate("/signup/success");
+        // navigate("/login");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
+    // navigate("/signup/success");
     navigate("/signup");
   };
 
@@ -78,6 +81,7 @@ function App() {
           <Route path="/account/myorders" element={<MyOrders />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<Signup addNewUser={addNewUser} />} />
+          <Route path="/signup/success" element={<SuccessSignup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/drinks" element={<BeverageList />} />
           <Route path="/order" element={<Order />} />
