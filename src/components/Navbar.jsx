@@ -28,8 +28,6 @@ function Navbar() {
     textDecoration: 'none'
   };
 
-  // let activeClassName = "underline";
-
   return (
     <div className="flex navbar">
       <button className="home-butt" onMouseOver={LogoShining} onMouseOut={LogoShiningOff} onClick={() => navigate("/")}>

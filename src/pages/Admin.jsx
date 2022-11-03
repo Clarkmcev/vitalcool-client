@@ -5,7 +5,7 @@ function Admin() {
   return (
     
     <div>
-      <div className="title">
+      <div className="head-title">
         My shop
       </div>
       <NavbarAdmin/>

@@ -15,9 +15,6 @@ function NavbarAccount() {
     textDecoration: "underline",
   };
 
-  let activeClassName = "underline";
-
-
   return (
     <>
     <div className="subnavbar">

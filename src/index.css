@@ -8,6 +8,10 @@
   }
 
 @layer components {
+    .container-full {
+        @apply bg-ternary
+    }
+
     .sidebar-icon {
         @apply relative
         hover:text-fourthy
@@ -119,7 +123,7 @@
 
     .form-button-choose {
         @apply bg-ternary text-primary py-2 px-4 text-center hover:rounded-xl focus:rounded-xl
-        rounded-3xl hover:border-aqua my-2 w-44
+        rounded-3xl hover:border-aqua my-2 w-44 mx-auto
         transition-all duration-200 active:bg-ternary focus:ring focus:ring-aqua block
     }
 
@@ -220,7 +224,11 @@
     }
 
     .title {
-        @apply text-xl my-10 text-primary mx-10
+        @apply text-xl my-10 text-primary
+    }
+
+    .title-in-container {
+        @apply text-primary text-4xl text-center pt-10 font-bold border-b-2 mx-20
     }
 
     .title-home {
@@ -277,15 +285,17 @@
         @apply bg-secondary rounded-2xl  text-ternary py-5 mb-5 shadow-md
     }
 
-
+    .head-title {
+        @apply text-6xl p-10 text-primary
+    }
 
     input {
-        @apply border-2 border-primary placeholder-primary focus:outline-none 
-        focus:border-aqua bg-ternary my-2 w-60
+        @apply border-none placeholder-primary focus:outline-none 
+        focus:border-aqua bg-ternary my-2 w-full text-primary
     }
 
     select {
-        @apply border-2 border-primary placeholder-primary  focus:border-aqua bg-ternary my-2 mx-10 rounded-2xl text-primary p-2
+        @apply placeholder-primary  focus:border-aqua bg-ternary my-2 mx-10 rounded-2xl text-primary p-2 outline-none
     }
 
     .search {
@@ -297,11 +307,7 @@
     }
 
     .form {
-        @apply bg-secondary mx-auto w-min px-10 py-5 rounded-2xl mb-5 text-primary shadow-md will-change-auto
-    }
-
-    .signup {
-        @apply flex flex-wrap justify-center
+        @apply bg-secondary m-auto rounded-3xl text-primary shadow-md
     }
 
     /* .form2 {

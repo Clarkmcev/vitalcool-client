@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="mt-5">
   <section className="ft-main">
     <div className="ft-main-item">
       <h2 className="ft-title">About</h2>
@@ -32,7 +32,7 @@ function Footer() {
       <h2 class="ft-title">Stay Updated</h2>
       <p>Subscribe to our newsletter to get our latest news.</p>
       <form>
-        <input className="input text-primary mx-5" type="email" name="email"/ >
+        <input className="input text-primary" type="email" name="email"/ >
         <button className="form-button">Subscribe</button>
       </form>
     </div>

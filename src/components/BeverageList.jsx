@@ -40,7 +40,7 @@ function BeverageList() {
 
   return (
     <>
-      <div className="title">
+      <div className="head-title">
         Shop
       </div>
       {isLoading && <LoadingSpinner/>}
@@ -57,7 +57,7 @@ function BeverageList() {
               <hr className="bg-primary mx-10"/>
           <div className="flex flex-wrap justify-evenly m-10">
               {beverage.filter((elem) => elem.name.toLowerCase().includes(searchField)).map((elem) => 
-                  <div key={uuid()} >
+                  <div key={uuid()} className="cursor-pointer">
                       <img src={elem.imageUrl} alt="beverage" className={isHovering ? 'img-product card' : 'img-product card'} onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}/>
                       <div>

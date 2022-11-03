@@ -4,7 +4,7 @@ import NavbarAccount from '../components/NavbarAccount';
 function Account() {
   return (
     <div>
-      <div className="title">
+      <div className="head-title">
         My account
       </div >
       <NavbarAccount/>

@@ -29,33 +29,33 @@ function Signup({addNewUser}) {
 
   return (
     <>
-      <div className="title">My account</div>
-    <div className='form w-7/12'>
+    <div className='form mt-5'>
     <form onSubmit={(e)=>{addNewUser(e,newUser)}}>
       <div className="signup">
         <div className="mb-5">
+          <div className="title-in-container">Signup form</div>
               <div className="title mx-20">User information</div>
-              <div className='mx-20'>
-                <div className="my-1">
-                  <label className=" text-fourthy">First name</label>
-                </div>
+              <div className='mx-20 flex space-x-6'>
+                <div className="my-1 flex-1">
+                  <label className="text-fourthy">First name</label>
                   <input  className="input"
                 type="text"
                 name="firstName"
                 onChange={handleChange}
               />
-              </div>
-
-              <div className='mx-20'>
-                <div className="my-1">
-                  <label className=" text-fourthy">Last name</label>
-                </div>
+                  </div>
+                <div className="my-1 flex-1">
+                  <label className="text-fourthy">Last name</label>
                   <input className="input"
                 type="text"
                 name="lastName"
                 onChange={handleChange}
               />
+                </div>
               </div>
+{/* 
+              <div className='mx-20'>
+              </div> */}
 
               <div className='mx-20'>
                 <div className="my-1">
