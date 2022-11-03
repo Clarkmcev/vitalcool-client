@@ -10,8 +10,8 @@ function SuccessPayment() {
 
   return (
     <>
-    <div className="title text-center">So cool !</div>
-    <div className="form text-fourthy text-center">
+    <div className="form p-5 text-fourthy text-center">
+      <div className="title text-center">So cool !</div>
         <div className="relative m-auto w-16 my-5 text-fourthy"><MdCheckCircle size='4rem'/></div>
       <div>Your booking has been confirmed {user.firstName}! Your order is already on the way ...</div>
       <div>Thanks for using Vitalcool.</div>

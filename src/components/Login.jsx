@@ -41,10 +41,7 @@ function Login() {
 
   return (
     <>
-      <div className="title ml-10">
-        Login
-      </div>
-    <div className="bg-secondary w-fit mx-auto p-10 rounded-xl">
+    <div className="bg-secondary w-fit m-auto p-10 rounded-xl">
     {isLoading && <LoadingSpinner/>}
     {!isLoading && <form className="text-left" onSubmit={loginUser}>
         <div>

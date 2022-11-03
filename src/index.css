@@ -318,3 +318,7 @@
         @apply bg-secondary
     }
 }
+
+table, th, td {
+    border:1px solid #EC7272;
+  }

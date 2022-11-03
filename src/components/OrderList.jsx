@@ -31,9 +31,9 @@ function OrderList() {
       const showContentOrder= (id) => {
         setShowContent(!showContent);
         let order = allOrders.found.filter((elem) => elem._id === id)
-        // console.log(order)
-        // order.products.map((elem) => console.log(elem))
-        // return <>{order.name} {formatter.format(order.price)}</>
+        console.log(order)
+        order.products.map((elem) => console.log(elem))
+        return <>{order.name} {formatter.format(order.price)}</>
       }
 
   return (
@@ -47,16 +47,35 @@ function OrderList() {
           <div className="w-60"></div>
         </div>
         {allOrders.found.map((order) => {
-            return <div key={uuid()} className="order-row-order">
+            return (
+            <div key={uuid()} className="order-row-order">
               <div className="text-primary">Order {order.orderId}</div>
               <div className="text-ternary">{formatter.format(order.totalPrice)}</div>
-              {/* <div>{order.user.address}</div>
-              <div>{order.user.town}</div> */}
               <div className="text-ternary">By {order.user.firstName} {order.user.lastName}</div>
               <div className="text-ternary">Purchased at {order.updatedAt}</div>
               <button className="butt-details" onClick={()=>showContentOrder(order._id)}>Details</button>
-                    </div>
+            </div>)
         })}
+
+        <table className="w-full">
+          <tr>
+            <th>Order ID</th>
+            <th>Price</th>
+            <th>Customer</th>
+            <th>Timestamp</th>
+          </tr>
+          {allOrders.found.map((order) => {
+              return (
+              <tr key={uuid()} className="">
+                <th className="text-primary">Order {order.orderId}</th>
+                <th className="text-ternary">{formatter.format(order.totalPrice)}</th>
+                <th className="text-ternary">By {order.user?.firstName} {order.user.lastName}</th>
+                <th className="text-ternary">Purchased at {order.updatedAt}</th>
+                {/* <button className="butt-details" onClick={()=>showContentOrder(order._id)}>Details</button> */}
+              </tr>)
+          })}
+        </table>
+
         </div>
     </div>
   )

@@ -47,9 +47,6 @@ function BeverageForm({addNewBeverage}) {
   return (
     <div className="bg-secondary rounded-3xl text-primary shadow-md mx-10 p-5 w-fit mx-auto">
         <form className="m-auto" onSubmit={(e)=>addNewBeverage(e, newBeverage)} >
-            <div className="title-in-container mx-20">
-                New beverage form
-            </div>
     <div className="flex space-x-6 items-center">
         <div className="px-20 flex-wrap">
             <div>
