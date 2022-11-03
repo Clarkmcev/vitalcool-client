@@ -123,7 +123,7 @@
 
     .form-button-choose {
         @apply bg-ternary text-primary py-2 px-4 text-center hover:rounded-xl focus:rounded-xl
-        rounded-3xl hover:border-aqua my-2 w-44 mx-auto
+        rounded-3xl hover:border-aqua my-2 w-44
         transition-all duration-200 active:bg-ternary focus:ring focus:ring-aqua block
     }
 
