@@ -7,7 +7,6 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 function MyOrders() {
     const { user, myOrders, setMyOrders } = useContext(AuthContext);
-    const [showContent, setShowContent] = useState(false)
 
     const getMyOrders = () => {
       if (user) {
@@ -16,6 +15,7 @@ function MyOrders() {
           .get(`${API_URL}/user/account/my-orders/${idUser}`)
           .then((response) => 
           {
+            console.log('he',response.data)
             setMyOrders(response.data);
           }
           )
@@ -25,6 +25,7 @@ function MyOrders() {
 
     useEffect(() => {
       getMyOrders()
+      console.log(myOrders)
     },[])
 
     var formatter = new Intl.NumberFormat("en-US", {
@@ -32,43 +33,32 @@ function MyOrders() {
       currency: "EUR",
     });
 
-    const showContentFunction = () => {
-      setShowContent(!showContent)
-    }
-
-    console.log(myOrders.length)
-
     if (!user) {
       return <div className="order-container-pay">Loading...</div>
     } else if (myOrders.length === 0) {
-      console.log('yes')
       return <div className="order-container-pay">You have no orders</div>
     }
 
   return (<>
     <div className="inside-container">
-      <div className="order-container-pay">
-        <div className="order-row-order bg-primary px-5 rounded-t-3xl m-b-0 ">
-          <div>Number</div>
-          <div>Total</div>
-          <div>Timestamps</div>
-          <div className="w-60"></div>
-        </div>
-          {myOrders.elem.map((order) => {
-              return <><hr/>
-              <div key={uuid()} className="order-row-order px-5">
-                        <h1 className="text-primary">Order {order.orderId}</h1>
-                        <div>{formatter.format(order.totalPrice)}</div>
-                        <p className="text-ternary">Purchased at {order.updatedAt}</p>
-                        <button className="butt-delete" onClick={()=> {showContentFunction()}}>Details</button>
-                        </div>
-                  {/* {showContent && order.products.map((product) => {
-                      return <div key={uuid()}>
-                          {product.name} {formatter.format(product.price)}
-                      </div>
-                  })} */}
-                      </>
+        <div className="order-container-pay">
+        <table className="w-full">
+          <tr className="w-full bg-primary text-fourthy font-thin px-5 rounded-t-3xl m-b-0 ">
+            <th >Order ID</th>
+            <th>Price</th>
+            <th>Customer</th>
+            <th>Timestamp</th>
+          </tr>
+          {myOrders.found && myOrders.found.map((order) => {
+              return (
+              <tr key={uuid()} className=" text-first bg-ternary">
+                <th className="font-thin">Order {order.orderId}</th>
+                <th className="font-thin">{formatter.format(order.totalPrice)}</th>
+                <th className="font-thin">{order.user?.firstName} {order.user.lastName}</th>
+                <th className="font-thin">Purchased at {order.updatedAt}</th>
+              </tr>)
           })}
+        </table>
       </div>
     </div>
     </>

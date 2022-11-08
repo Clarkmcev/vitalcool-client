@@ -14,7 +14,7 @@ function BeverageForm({addNewBeverage}) {
         softType: '',
         alcoholType: '',
         undistilledType: '',
-        imageUrl: '',
+        imageUrl: imgPng,
         price: 0,
         quantity: 0,
     })
@@ -45,7 +45,7 @@ function BeverageForm({addNewBeverage}) {
       }, [])
 
   return (
-    <div className="bg-secondary rounded-3xl text-primary shadow-md mx-10 p-5 w-fit mx-auto">
+    <div className="bg-secondary rounded-3xl text-primary shadow-md p-5 w-fit mx-auto">
         <form className="m-auto" onSubmit={(e)=>addNewBeverage(e, newBeverage)} >
     <div className="flex space-x-6 items-center">
         <div className="px-20 flex-wrap">

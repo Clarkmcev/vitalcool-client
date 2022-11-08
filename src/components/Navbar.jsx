@@ -20,7 +20,6 @@ function Navbar() {
 
   const showBasketFunction = () => {
     setShowBasket(!showBasket);
-    console.log(showBasket)
   }
 
   let activeStyle = {

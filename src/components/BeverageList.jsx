@@ -17,11 +17,9 @@ function BeverageList() {
     currency: "EUR",
   });
 
-  // const bevCopy = [...beverage];
   const [isHovering, setIsHovering] = useState(false);
 
   const searchFunction = (event) => {
-    //convert input text to lower case
     var lowerCase = event.toLowerCase();
     setSearchField(lowerCase);
     }

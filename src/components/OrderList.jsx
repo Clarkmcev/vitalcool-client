@@ -39,39 +39,20 @@ function OrderList() {
   return (
     <div className="inside-container">
         <div className="order-container-pay">
-        <div className="order-row-order bg-primary px-5 rounded-t-3xl m-b-0 ">
-          <div>Number</div>
-          <div>Total</div>
-          <div>User</div>
-          <div>Timestamps</div>
-          <div className="w-60"></div>
-        </div>
-        {allOrders.found.map((order) => {
-            return (
-            <div key={uuid()} className="order-row-order">
-              <div className="text-primary">Order {order.orderId}</div>
-              <div className="text-ternary">{formatter.format(order.totalPrice)}</div>
-              <div className="text-ternary">By {order.user.firstName} {order.user.lastName}</div>
-              <div className="text-ternary">Purchased at {order.updatedAt}</div>
-              <button className="butt-details" onClick={()=>showContentOrder(order._id)}>Details</button>
-            </div>)
-        })}
-
         <table className="w-full">
-          <tr>
-            <th>Order ID</th>
+          <tr className="w-full bg-primary text-fourthy font-thin px-5 rounded-t-3xl m-b-0 ">
+            <th >Order ID</th>
             <th>Price</th>
             <th>Customer</th>
             <th>Timestamp</th>
           </tr>
           {allOrders.found.map((order) => {
               return (
-              <tr key={uuid()} className="">
-                <th className="text-primary">Order {order.orderId}</th>
-                <th className="text-ternary">{formatter.format(order.totalPrice)}</th>
-                <th className="text-ternary">By {order.user?.firstName} {order.user.lastName}</th>
-                <th className="text-ternary">Purchased at {order.updatedAt}</th>
-                {/* <button className="butt-details" onClick={()=>showContentOrder(order._id)}>Details</button> */}
+              <tr key={uuid()} className=" text-first bg-ternary">
+                <th className="font-thin">Order {order.orderId}</th>
+                <th className="font-thin">{formatter.format(order.totalPrice)}</th>
+                <th className="font-thin">{order.user?.firstName} {order.user.lastName}</th>
+                <th className="font-thin">Purchased at {order.updatedAt}</th>
               </tr>)
           })}
         </table>

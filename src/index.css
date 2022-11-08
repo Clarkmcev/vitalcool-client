@@ -197,7 +197,7 @@
     }
 
     .logo {
-        @apply h-10 m-3
+        @apply h-10 m-3 
         
     }
 
@@ -212,7 +212,7 @@
 
     .card {
         @apply bg-fourthy px-4 rounded-r-full rounded-tl-full rounded-bl-3xl border-r-primary border-r-8 border-l-ternary border-l-8  
-        transition-all duration-500 hover:rotate-6
+        transition-all duration-500 hover:rotate-6 cursor-pointer
     }
 
     .app {
