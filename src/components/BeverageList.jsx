@@ -5,7 +5,7 @@ import LoadingSpinner from './LoadingSpinner';
 
 
 function BeverageList() {
-    const { user, basket, setBasket, beverage, isLoggedIn, isLoading, setBeverage, searchField, setSearchField } = useContext(AuthContext);
+    const { user, basket, setBasket, beverage, isLoggedIn, isLoading, searchField, setSearchField } = useContext(AuthContext);
     const [filter, setFilter] = useState('Soft')
 
       const addBeverageToBasket = (idUser, elem) => {
@@ -53,7 +53,7 @@ function BeverageList() {
                   </select>
               </div>
               <hr className="bg-primary mx-10"/>
-          <div className="flex flex-wrap justify-evenly m-10">
+          <div className="flex flex-wrap space-x-10 m-10">
               {beverage.filter((elem) => elem.name.toLowerCase().includes(searchField)).map((elem) => 
                   <div key={uuid()} className="cursor-pointer">
                       <img src={elem.imageUrl} alt="beverage" className={isHovering ? 'img-product card' : 'img-product card'} onMouseOver={handleMouseOver}

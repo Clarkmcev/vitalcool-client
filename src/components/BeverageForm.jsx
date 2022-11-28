@@ -49,12 +49,22 @@ function BeverageForm({addNewBeverage}) {
         <form className="m-auto" onSubmit={(e)=>addNewBeverage(e, newBeverage)} >
     <div className="flex space-x-6 items-center">
         <div className="px-20 flex-wrap">
+                <div>
+                        <label className="text-fourthy">Product name</label>
+                        <input className="input" type="text" name="name" onChange={handleChange}></input>
+                </div>
             <div>
                 <div className="w-96 h-96 bg-ternary overflow-hidden p-5 rounded-2xl my-5">
                     {!imageUrl ? 
                     <img src={imgPng} alt="" className="object-contain"/> :
                     <img src={imageUrl} alt="" className="object-contain"/>}
                 </div>
+                <div>
+                <div>
+                <label className=" text-fourthy">Image upload</label>
+                </div>
+                <input className="w-full" type="file" name="imageUrl" onChange={(e)=>{handleFileUpload(e)}}></input>
+            </div>
             <div className="flex space-x-10">
                 <div>
                     <label className="text-fourthy">Choose a type of drink</label>
@@ -105,18 +115,8 @@ function BeverageForm({addNewBeverage}) {
                                 </div>
             }
         </div>
-            <div>
-                <div>
-                <label className=" text-fourthy">Image upload</label>
-                </div>
-                <input className="w-full" type="file" name="imageUrl" onChange={(e)=>{handleFileUpload(e)}}></input>
-            </div>
         </div>
             <div>
-                <div>
-                        <label className="text-fourthy">Product name</label>
-                        <input className="input" type="text" name="name" onChange={handleChange}></input>
-                </div>
                 <div>
                         <label className="text-fourthy">Price</label>
                         <input className="input" type="number" name="price" onChange={handleChange}></input>

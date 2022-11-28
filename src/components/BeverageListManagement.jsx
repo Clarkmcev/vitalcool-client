@@ -40,9 +40,9 @@ function BeverageListManagement() {
 
   return (
     <div className="inside-container">
-        <div className="flex flex-wrap justify-between m-10">
+        <div className="flex flex-wrap space-x-10 space-y-2 m-10">
             {beverage.map((elem)=> 
-            <div className="w-1/6 m-2" key={uuid()}>
+            <div className="" key={uuid()}>
                 <img src={elem.imageUrl} alt="beverage" className="img-product card"/>
                 <h1 className="text-fourthy font-bold text-center">{elem.name}</h1>
                 <div className="flex justify-evenly  text-ternary mb-2">
