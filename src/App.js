@@ -7,7 +7,6 @@ import HomePage from "./components/HomePage";
 import MyOrders from "./components/MyOrders";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import Logout from "./components/Logout";
 import axios from "axios";
 import BeverageList from "./components/BeverageList";
 import BeverageForm from "./components/BeverageForm";
@@ -23,19 +22,14 @@ import MyDetails from "./components/MyDetails";
 import Basket from "./components/Basket";
 import Footer from "./components/Footer";
 import SuccessSignup from "./components/SuccessSignup";
+import Product from "./components/Product";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 function App() {
   const navigate = useNavigate();
-  const {
-    beverage,
-    setBeverage,
-    showBasket,
-    user,
-    errorMessage,
-    setErrorMessage,
-  } = useContext(AuthContext);
+  const { beverage, setBeverage, showBasket, setErrorMessage } =
+    useContext(AuthContext);
 
   const addNewUser = (e, newUser) => {
     e.preventDefault();
@@ -80,6 +74,7 @@ function App() {
         <Routes>
           <Route path="/account/myorders" element={<MyOrders />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="/drinks/:id" element={<Product />} />
           <Route path="/signup" element={<Signup addNewUser={addNewUser} />} />
           <Route path="/signup/success" element={<SuccessSignup />} />
           <Route path="/login" element={<Login />} />
@@ -87,8 +82,6 @@ function App() {
           <Route path="/order" element={<Order />} />
           <Route path="/account" element={<Account />} />
           <Route path="/user/order/success" element={<SuccessPayment />} />
-          <Route path="/logout" element={<Logout />} />
-
           <Route path="account" element={<Account />}>
             <Route index element={<MyOrders />} />
             <Route path="orders" element={<MyOrders />} />

@@ -3,7 +3,6 @@ import React, {useContext} from 'react'
 import { MdCheckCircle } from 'react-icons/md';
 import { Navigate, useNavigate } from "react-router-dom";
 
-
 function SuccessPayment() {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate()

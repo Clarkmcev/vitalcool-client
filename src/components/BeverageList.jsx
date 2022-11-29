@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from "../context/auth.context";
 import uuid from 'react-uuid';
 import LoadingSpinner from './LoadingSpinner';
-
+import { Link } from "react-router-dom";
 
 function BeverageList() {
     const { user, basket, setBasket, beverage, isLoggedIn, isLoading, searchField, setSearchField } = useContext(AuthContext);
@@ -55,6 +55,7 @@ function BeverageList() {
               <hr className="bg-primary mx-10"/>
           <div className="flex flex-wrap space-x-10 justify-center m-10">
               {beverage.filter((elem) => elem.name.toLowerCase().includes(searchField)).map((elem) => 
+                  <Link to={elem._id}>
                   <div key={uuid()} className="cursor-pointer w-80">
                       <div className="card">
                         <img src={elem.imageUrl} alt="beverage" className='img-product' onMouseOver={handleMouseOver}
@@ -69,6 +70,7 @@ function BeverageList() {
                       </div>
                   {isLoggedIn && <ButtonStyle butt={<button className="button-style" onClick={()=> {addBeverageToBasket(user._id, elem)}}>Add to Basket</button>}/>}
                   </div>
+                  </Link>
               )}
           </div>
     </div>}
