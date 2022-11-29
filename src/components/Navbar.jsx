@@ -37,27 +37,20 @@ function Navbar() {
               isActive ? activeStyle : { textDecoration: 'none' }
             }>Shop</NavLink>}/>
       </div>
-      {/* <div>
-      <NavBarButtonStyle1 icon={<NavLink to="/drinks" style={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>About</NavLink>}/>
-      </div> */}
-
    {!isLoggedIn && 
    <>
    <NavBarButtonStyle1 icon={<NavLink to="/signup" style={({ isActive }) =>
-              isActive ? activeStyle : undefined
+              isActive ? activeStyle : { textDecoration: 'none' }
             }>Signup</NavLink>}/>
    <NavBarButtonStyle1 icon={<NavLink to="/login" style={({ isActive }) =>
-              isActive ? activeStyle : undefined
+              isActive ? activeStyle : { textDecoration: 'none' }
             }>Login</NavLink>}/>
-   
     </>}
     {isLoggedIn ? <NavBarButtonStyle1 icon={<NavLink to="/admin" style={({ isActive }) =>
-              isActive ? activeStyle : undefined
+              isActive ? activeStyle : { textDecoration: 'none' }
             }>Admin</NavLink>}/> : null}
     {isLoggedIn ? <NavBarButtonStyle1 icon={<NavLink to="/account" style={({ isActive }) =>
-              isActive ? activeStyle : undefined
+              isActive ? activeStyle : { textDecoration: 'none' }
             }>My Account</NavLink>}/> : null}
     {user &&  <button className="basket flex flex-wrap hover:text-fourthy" onClick={(e) => showBasketFunction()}><FaShoppingBasket size='2rem'/></button>}
     <div className="orders-in-basket">{basket.length === 0 ? null : <div>({basket.length})</div>} </div>

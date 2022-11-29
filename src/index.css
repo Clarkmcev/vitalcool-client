@@ -13,13 +13,11 @@
     }
 
     .sidebar-icon {
-        @apply relative
+        @apply
         hover:text-fourthy
         transition-all duration-200
         mx-6 py-8
-        /* no-underline */
-        hover:underline
-        underline-offset-8
+        no-underline
         decoration-aqua
         focus:bg-fourthy
     }
@@ -206,13 +204,13 @@
     }
 
     .img-product {
-        @apply w-80
-        hover:bg-texture m-auto my-2 transition-all duration-500
+        @apply
+         m-auto my-2 h-44
     }
 
     .card {
         @apply bg-fourthy px-4 rounded-r-full rounded-tl-full rounded-bl-3xl border-r-primary border-r-8 border-l-ternary border-l-8  
-        transition-all duration-500 hover:rotate-6 cursor-pointer
+        transition-all duration-500 hover:rotate-6 cursor-pointer p-10 w-80 hover:bg-texture 
     }
 
     .app {

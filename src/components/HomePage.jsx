@@ -88,11 +88,13 @@ function HomePage() {
               <div className="flex flex-wrap justify-evenly">
               {beverage.filter((item,idx) => idx < 3).map((elem) => 
                   <div key={uuid()} >
-                      <img src={elem.imageUrl} alt="beverage" className={isHovering ? 'img-product card' : 'img-product card'} onMouseOver={handleMouseOver}
+                    <div className="card">
+                      <img src={elem.imageUrl} alt="beverage" className='img-product' onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}/>
+                    </div>
                         <div>
                           <h1 className="text-fourthy font-bold">{elem.name}</h1>
-                          <div className="flex justify-evenly text-ternary mx-20">
+                          <div className="flex justify-between text-ternary mx-20">
                             <p>{formatter.format(elem.price)}</p>
                             <p>{elem.quantity} cl</p>
                           </div>

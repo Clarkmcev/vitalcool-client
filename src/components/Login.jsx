@@ -4,6 +4,7 @@ import { AuthContext } from '../context/auth.context';
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from 'react';
 import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner2 from './LoadingSpinner2';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
@@ -41,9 +42,9 @@ function Login() {
 
   return (
     <>
-    <div className="bg-secondary w-fit m-auto p-10 rounded-xl">
-    {isLoading && <LoadingSpinner/>}
-    {!isLoading && <form className="text-left" onSubmit={loginUser}>
+    <div className="bg-secondary w-fit m-auto p-10 rounded-xl mt-10">
+    {/* {isLoading && <LoadingSpinner/>} */}
+    {<form className="text-left" onSubmit={loginUser}>
         <div>
           <div className="title-in-container">Login</div>
           <div className="title">
@@ -61,7 +62,7 @@ function Login() {
               <input className="input" type="password" name="password" onChange={handlePassword} />
         </div>
         <div className="flex items-center space-x-4">
-          <button className="my-5 form-button" type="submit">Login</button>
+          <button className="my-5 form-button" type="submit">{isLoading ? <LoadingSpinner2/> : <>Login</>}</button>
           <div className="text-ternary">Forgot <span className="hover:underline cursor-pointer">password?</span></div>
         </div>
         <div className= "text-ternary">No account yet? <Link to="/signup" className="hover:underline">Register</Link> here</div>

@@ -29,7 +29,7 @@ function Signup({addNewUser}) {
 
   return (
     <>
-    <div className='form mt-5'>
+    <div className='form mt-5 mx-5 md:mx-auto'>
     <form onSubmit={(e)=>{addNewUser(e,newUser)}}>
       <div className="signup">
         <div className="mb-5">

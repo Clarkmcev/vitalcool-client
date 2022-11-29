@@ -53,11 +53,13 @@ function BeverageList() {
                   </select>
               </div>
               <hr className="bg-primary mx-10"/>
-          <div className="flex flex-wrap space-x-10 m-10">
+          <div className="flex flex-wrap space-x-10 justify-center m-10">
               {beverage.filter((elem) => elem.name.toLowerCase().includes(searchField)).map((elem) => 
-                  <div key={uuid()} className="cursor-pointer">
-                      <img src={elem.imageUrl} alt="beverage" className={isHovering ? 'img-product card' : 'img-product card'} onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}/>
+                  <div key={uuid()} className="cursor-pointer w-80">
+                      <div className="card">
+                        <img src={elem.imageUrl} alt="beverage" className='img-product' onMouseOver={handleMouseOver}
+                  onMouseOut={handleMouseOut}/>
+                      </div>
                       <div>
                       <h1 className="text-fourthy font-bold">{elem.name}</h1>
                       <div className="flex justify-between text-ternary">
