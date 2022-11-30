@@ -38,7 +38,7 @@ function Product() {
         <div className="head-title">
             Shop
         </div>
-        <div className="inside-container w-fit mx-auto bg-secondary text-fourthy">
+        <div className="inside-container w-fit bg-secondary text-fourthy mx-5 sm:mx-auto">
             {isLoading ? <LoadingSpinner/> : 
             <div className="px-10">
                 <div className="flex space-x-2 justify-center items-center">
@@ -65,7 +65,7 @@ function Product() {
                         </div>
                         <div className="flex items-center justify-between">
                             {isLoggedIn && <ButtonStyle butt={<button className="button-style" onClick={()=> {addBeverageToBasket(user._id, drink)}}>Add to Basket</button>}/>}
-                            <button onClick={()=>navigate("/drinks")}><AiOutlineArrowLeft size={"32px"}/></button>
+                            <button className="hover:text-primary" onClick={()=>navigate("/drinks")}><AiOutlineArrowLeft size={"32px"}/></button>
                         </div> 
                     </div>
                 </div>

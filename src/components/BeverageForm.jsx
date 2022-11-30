@@ -10,13 +10,12 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 function BeverageForm({addNewBeverage}) {
     const [newBeverage, setNewBeverage] = useState({
         name: '',
-        type: '',
-        softType: '',
-        alcoholType: '',
-        undistilledType: '',
         imageUrl: imgPng,
         price: 0,
         quantity: 0,
+        ingredient: [],
+        description: '',
+        mainAlcohol: ''
     })
 
     const { imageUrl, setImageUrl } = useContext(AuthContext);
@@ -67,68 +66,35 @@ function BeverageForm({addNewBeverage}) {
             </div>
             <div className="flex space-x-10">
                 <div>
-                    <label className="text-fourthy">Choose a type of drink</label>
-                    <div className="flex flex-col justify-evenly">
-                        <button className='form-button-choose' name="type" value="Soft" onClick={handleChange}>Soft drink</button>
-                        <button className='form-button-choose' name="type" value="Liquor" onClick={handleChange}>Liquor & Spirit</button>
-                        <button className='form-button-choose' name="type" value="Undistilled" onClick={handleChange}>Undistilled drink</button>
+                    <div >
+                        <label className="text-fourthy">Main alcohol</label>
                     </div>
-                </div>
-            {newBeverage.type === "Soft" && 
-                        <div>
-                            <div>
-                        <label className=" text-fourthy">Type</label>
-                        </div>
-                        <select name="softType" onChange={handleChange} className="w-fit text-center mx-auto">
-                            <option value="Juice">Juice</option>
-                            <option value="Soda">Soda</option>
-                        </select>
-                    </div>
-            }
-            {newBeverage.type === "Liquor" && 
-                                <div>
-                                    <div >
-                                <label className=" text-fourthy">Type</label>
-                                </div>
-                                <select name="alcoholType" onChange={handleChange} className="w-fit text-center mx-auto">
-                                    <option value="Gin">Gin</option>
-                                    <option value="Brandy">Brandy</option>
-                                    <option value="Whiskey">Whiskey</option>
-                                    <option value="Rum">Rum</option>
-                                    <option value="Vodka">Vodka</option>
-                                    <option value="Absinthe">Absinthe</option>
-                                </select>
-                            </div>
-            }
-            {newBeverage.type === "Undistilled" && 
-                                <div>
-                                    <div>
-                                        <label className=" text-fourthy">Type</label>
-                                    </div>
-                                    <select name="undistilledType" onChange={handleChange} className="w-fit text-center mx-auto">
-                                        <option value="Beer">Beer</option>
-                                        <option value="Wine">Wine</option>
-                                        <option value="Cider">Cider</option>
-                                        <option value="Mead">Mead</option>
-                                        <option value="Sake">Sake</option>
-                                    </select>
-                                </div>
-            }
+                <select name="alcoholType" onChange={handleChange} className="w-fit text-center mx-auto">
+                    <option value="Gin">Gin</option>
+                    <option value="Whiskey">Whiskey</option>
+                    <option value="Rum">Rum</option>
+                    <option value="Vodka">Vodka</option>
+                </select>
+            </div>
         </div>
         </div>
             <div>
                 <div>
-                        <label className="text-fourthy">Price</label>
-                        <input className="input" type="number" name="price" onChange={handleChange}></input>
+                    <label className="text-fourthy">Price</label>
+                    <input className="input" type="number" name="price" onChange={handleChange}></input>
                 </div>
                 <div>
-                        <label className="text-fourthy">Quantity</label>
-                        <input className="input" type="number" name="quantity" onChange={handleChange}></input>
+                    <label className="text-fourthy">Quantity</label>
+                    <input className="input" type="number" name="quantity" onChange={handleChange}></input>
+                </div>
+                <div>
+                    <label className="text-fourthy">Description</label>
+                    <input className="input h-60" type="text" name="description" onChange={handleChange}></input>
                 </div>
             </div>
             <div className="">
-            <button className="form-button w-full" type="submit">Upload</button>
-        </div>
+                <button className="form-button w-full" type="submit">Upload</button>
+            </div>
         </div>
         </div>
         </form>

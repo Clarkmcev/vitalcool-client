@@ -1,12 +1,11 @@
 import React from 'react'
 import { NavLink, Outlet } from "react-router-dom";
 
+
 function NavbarAdmin() {
   let activeStyle = {
     textDecoration: "underline",
   };
-
-  let activeClassName = "underline";
 
   return (
     <>
@@ -27,8 +26,7 @@ function NavbarAdmin() {
             }>Orders</NavLink>}/>
       </div>
     </div>
-
-    <Outlet/>
+      <Outlet/>
     </>
   )
 }

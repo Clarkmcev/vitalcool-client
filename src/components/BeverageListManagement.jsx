@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import uuid from 'react-uuid';
-import NavbarAdmin from '../components/NavbarAdmin';
+import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
@@ -15,7 +15,7 @@ function BeverageListManagement() {
         currency: "EUR",
       });
 
-      const removeItem = (id) => {
+    const removeItem = (id) => {
         axios.get(`${API_URL}/admin/delete/${id}`)
         .then(() => console.log())
         .catch((err) => console.log(err))
@@ -40,20 +40,33 @@ function BeverageListManagement() {
 
   return (
     <div className="inside-container">
-        <div className="flex flex-wrap space-x-10 space-y-2 m-10">
+        <div className="flex flex-col m-10">
+            <table className="w-full">
+              <tr className="w-full bg-primary text-fourthy font-thin px-5 rounded-t-3xl m-b-0 ">
+              <th>Product name</th>
+              <th>Alcohol type</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Edit</th>
+              </tr>
             {beverage.map((elem)=> 
-            <div className="" key={uuid()}>
-                <img src={elem.imageUrl} alt="beverage" className="img-product card"/>
-                <h1 className="text-fourthy font-bold text-center">{elem.name}</h1>
-                <div className="flex justify-evenly  text-ternary mb-2">
-                    <div>{formatter.format(elem.price)}</div>
-                    <div>{elem.quantity}{'  '}cl</div>
+              <tr key={uuid()} className="text-primary bg-ternary">
+                <th className="font-thin">{elem.name}</th>
+                <th className="font-thin">{elem.mainAlcohol}</th>
+                <th className="font-thin">{formatter.format(elem.price)}</th>
+                <th className="font-thin">{elem.quantity} cl</th>
+                <th className="font-thin">
+                  <div className="flex justify-center space-x-2">
+                    <button className="">
+                      <AiFillEdit/>
+                    </button>
+                    {/* <button className="">
+                      <AiFillDelete/>
+                    </button> */}
                   </div>
-                  <div className="flex justify-evenly my-1">
-                    <button className="butt-admin">Edit</button>
-                    <button className="butt-delete" onClick={() => removeItem(elem._id)}>Delete</button>
-                  </div>
-            </div>)}
+                </th>
+              </tr>)}
+            </table>
         </div>
       </div>
   )
