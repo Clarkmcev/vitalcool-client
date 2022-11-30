@@ -1,16 +1,19 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from "../context/auth.context";
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import axios from "axios";
 import LoadingSpinner from './LoadingSpinner';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 function Product() {
+    const { user, basket, setBasket, beverage, isLoggedIn, searchField, setSearchField } = useContext(AuthContext)
     const [isLoading, setIsLoading] = useState(true)
     const [drink, setDrink] = useState({})
     let { id } = useParams()
+    const navigate = useNavigate();
 
     const getBeverageInformation = () => {
         axios.get(`${API_URL}/user/drinks/${id}`)
@@ -21,7 +24,12 @@ function Product() {
         })
     }
 
+    const addBeverageToBasket = (idUser, elem) => {
+        setBasket([...basket,elem])
+      }
+
     useEffect(() => {
+        window.scrollTo(0, 0)
         getBeverageInformation()
     },[])
 
@@ -30,11 +38,46 @@ function Product() {
         <div className="head-title">
             Shop
         </div>
-        <div className="inside-container bg-secondary text-fourthy">
-            {isLoading ? <LoadingSpinner/> : <>{drink.name}</>}
+        <div className="inside-container w-fit mx-auto bg-secondary text-fourthy">
+            {isLoading ? <LoadingSpinner/> : 
+            <div className="px-10">
+                <div className="flex space-x-2 justify-center items-center">
+                    <div className="max-w-xl">
+                        <div className="text-4xl font-semibold text-primary">
+                            {drink.name}
+                        </div>
+                        <p className="py-5">
+                            <p className="text-primary font-semibold text-xl">
+                                Description
+                            </p>
+                            {drink.description}
+                        </p>
+                        <p className="text-primary font-semibold text-xl">
+                            Ingredients
+                        </p>
+                        {drink.ingredients.map((ingredient) => 
+                            <div>{ingredient}</div>
+                        )}
+                    </div>
+                    <div className="flex flex-col space-y-2">
+                        <div className="card">
+                            <img src={drink.imageUrl} alt="" className="img-product"/>
+                        </div>
+                        <div className="flex items-center justify-between">
+                            {isLoggedIn && <ButtonStyle butt={<button className="button-style" onClick={()=> {addBeverageToBasket(user._id, drink)}}>Add to Basket</button>}/>}
+                            <button onClick={()=>navigate("/drinks")}><AiOutlineArrowLeft size={"32px"}/></button>
+                        </div> 
+                    </div>
+                </div>
+
+            </div>}
         </div>
     </>
   )
 }
+
+const ButtonStyle = ({butt}) => {
+    return <div className="butt">{butt}</div>
+  }
 
 export default Product

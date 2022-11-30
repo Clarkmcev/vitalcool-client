@@ -55,12 +55,13 @@ function BeverageList() {
               <hr className="bg-primary mx-10"/>
           <div className="flex flex-wrap space-x-10 justify-center m-10">
               {beverage.filter((elem) => elem.name.toLowerCase().includes(searchField)).map((elem) => 
-                  <Link to={elem._id}>
-                  <div key={uuid()} className="cursor-pointer w-80">
+                  <div key={uuid()} className="cursor-pointer w-80 p-5">
+                      <Link to={elem._id}>
                       <div className="card">
                         <img src={elem.imageUrl} alt="beverage" className='img-product' onMouseOver={handleMouseOver}
                   onMouseOut={handleMouseOut}/>
                       </div>
+                      </Link>
                       <div>
                       <h1 className="text-fourthy font-bold">{elem.name}</h1>
                       <div className="flex justify-between text-ternary">
@@ -70,7 +71,7 @@ function BeverageList() {
                       </div>
                   {isLoggedIn && <ButtonStyle butt={<button className="button-style" onClick={()=> {addBeverageToBasket(user._id, elem)}}>Add to Basket</button>}/>}
                   </div>
-                  </Link>
+
               )}
           </div>
     </div>}
@@ -79,7 +80,7 @@ function BeverageList() {
 }
 
 const ButtonStyle = ({butt}) => {
-  return <div className="butt">{butt}</div>
+  return <div className="butt m-auto">{butt}</div>
 }
 
 export default BeverageList;
