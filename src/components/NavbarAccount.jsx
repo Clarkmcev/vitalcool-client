@@ -17,7 +17,8 @@ function NavbarAccount() {
 
   return (
     <>
-    <div className="subnavbar">
+    <div className="subnavbar flex justify-between">
+      <div className="flex">
         <div>
           <NavBarButtonStyle2 icon={<NavLink  to="orders" style={({ isActive }) =>
               isActive ? activeStyle : undefined
@@ -33,10 +34,12 @@ function NavbarAccount() {
               isActive ? activeStyle : undefined
             }>Payments</NavLink>}/>
         </div>
-        <div className="absolute right-0 top-48">
-        <NavBarButtonStyle2 icon={<button className="butt-admin" onClick={logOutUserAccount}>Logout</button>}/>
         </div>
+        <div className="">
+        <NavBarButtonStyle2 icon={<button className="butt-admin" onClick={logOutUserAccount}>Logout</button>}/>
+      </div>
     </div>
+
     <Outlet/>
     </>
   )

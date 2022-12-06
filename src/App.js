@@ -45,18 +45,29 @@ function App() {
     navigate("/signup");
   };
 
+  const getAllBeverage = () => {
+    const storedToken = localStorage.getItem("authToken");
+    axios
+      .get(`${API_URL}/auth/drinks`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setBeverage(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const addNewBeverage = (e, newBeverage) => {
     e.preventDefault();
     axios
       .post(`${API_URL}/admin/new`, newBeverage)
       .then(() => {
-        setBeverage([...beverage, newBeverage]);
+        getAllBeverage();
         navigate("/admin");
       })
       .catch((error) => {
-        console.log(error);
+        setErrorMessage(error.response.data.message);
       });
-    navigate("/admin");
   };
 
   return (

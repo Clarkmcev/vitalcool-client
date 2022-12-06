@@ -42,30 +42,33 @@ function BeverageListManagement() {
     <div className="inside-container">
         <div className="flex flex-col m-10">
             <table className="w-full">
+            <tbody>
               <tr className="w-full bg-primary text-fourthy font-thin px-5 rounded-t-3xl m-b-0 ">
               <th>Product name</th>
               <th>Alcohol type</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th>Edit</th>
+              {/* <th>Edit</th> */}
               </tr>
-            {beverage.map((elem)=> 
-              <tr key={uuid()} className="text-primary bg-ternary">
+            {beverage.map((elem, index)=> 
+
+              <tr key={index} className="text-primary bg-ternary">
                 <th className="font-thin">{elem.name}</th>
                 <th className="font-thin">{elem.mainAlcohol}</th>
                 <th className="font-thin">{formatter.format(elem.price)}</th>
                 <th className="font-thin">{elem.quantity} cl</th>
-                <th className="font-thin">
+                {/* <th className="font-thin">
                   <div className="flex justify-center space-x-2">
                     <button className="">
                       <AiFillEdit/>
                     </button>
-                    {/* <button className="">
+                    <button className="">
                       <AiFillDelete/>
-                    </button> */}
+                    </button>
                   </div>
-                </th>
+                </th> */}
               </tr>)}
+              </tbody>
             </table>
         </div>
       </div>

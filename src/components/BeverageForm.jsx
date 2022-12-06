@@ -16,11 +16,13 @@ function BeverageForm({addNewBeverage}) {
         description: '',
         mainAlcohol: ''
     })
-    const [ingredients, setIngredients] = useState([])
+    const [numberIngredients, setNumberIngredients] = useState([])
     const [listIngredients, setListIngredients] = useState({})
-    const { imageUrl, setImageUrl } = useContext(AuthContext);
+    const { imageUrl, setImageUrl, errorMessage, setErrorMessage } = useContext(AuthContext);
+
 
     const handleChange = (e) => {
+        setErrorMessage('')
         e.preventDefault();
         const value = e.target.value;
         const name = e.target.name;
@@ -32,26 +34,33 @@ function BeverageForm({addNewBeverage}) {
         const value = e.target.value;
         const name = e.target.name;
         setListIngredients({...listIngredients, [name]:value})
-        console.log(listIngredients)
         const arr = []
         Object.keys(listIngredients).forEach(function(key) {
             arr.push(listIngredients[key])
         })
         setNewBeverage({...newBeverage,ingredients:arr})
-        console.log(newBeverage)
     }
 
     const handleAddIngredients = (e) => {
-        const arr = [...ingredients]
+        const arr = [...numberIngredients]
         arr.push(1)
-        setIngredients([...arr])
+        setNumberIngredients([...arr])
         e.preventDefault();
     }
 
-    const handleRemoveIngredients = (e) => {
-        const arr = [...ingredients]
-        arr.pop()
-        setIngredients([...arr])
+    const handleRemoveIngredients = (index, e) => {
+        const arr = [...numberIngredients]
+        arr.splice(index, 1)
+        let n = index + 1
+        delete listIngredients[`ingredient${n}`]
+        setNumberIngredients([...arr])
+
+        const arrIngredients = []
+        Object.keys(listIngredients).forEach(function(key) {
+            arrIngredients.push(listIngredients[key])
+        })
+        setNewBeverage({...newBeverage,ingredients:arrIngredients})
+
         e.preventDefault();
     }
 
@@ -72,12 +81,15 @@ function BeverageForm({addNewBeverage}) {
       }, [])
 
   return (
-    <div className="bg-secondary rounded-3xl text-primary shadow-md p-5 w-fit mx-5 sm:mx-auto">
+    <div className="bg-secondary rounded-2xl text-primary shadow-md p-5 w-fit mx-10">
         <form className="m-auto" onSubmit={(e)=>addNewBeverage(e, newBeverage)} >
+            <p className="text-3xl font-semibold pb-5 text-center">
+                New product
+            </p>
     <div className="flex space-x-10 px-5">
         <div className="">
             <div className="flex flex-col items-center max-w-xl">
-                <div className="w-full h-fit bg-ternary overflow-hidden p-5 rounded-2xl my-5">
+                <div className="h-fit bg-ternary overflow-hidden p-5 rounded-2xl my-5">
                     {!imageUrl ? 
                     <img src={imgPng} alt="" className="object-contain"/> :
                     <img src={imageUrl} alt="" className="object-contain"/>}
@@ -89,9 +101,6 @@ function BeverageForm({addNewBeverage}) {
             </div>
         </div>
         <div>
-            <p className="text-3xl font-semibold pb-5">
-                New product
-            </p>
             <div>
                 <label className="text-fourthy">Product name</label>
                 <input className="input" type="text" name="name" onChange={handleChange}></input>
@@ -109,7 +118,7 @@ function BeverageForm({addNewBeverage}) {
                         <div >
                             <label className="text-fourthy">Type</label>
                         </div>
-                        <select name="alcoholType" onChange={handleChange} className="w-fit text-center mx-auto">
+                        <select name="mainAlcohol" onChange={handleChange} className="w-fit text-center mx-auto">
                             <option value="Gin">Gin</option>
                             <option value="Whiskey">Whiskey</option>
                             <option value="Rum">Rum</option>
@@ -121,15 +130,15 @@ function BeverageForm({addNewBeverage}) {
                 <div>
                     <label className="text-fourthy">Ingredients</label>
                     <div className="flex space-x-4 items-center">
-                    <input className="input" type="text" name="ingredient" onChange={handleChangeIngredients}></input>
+                    <input className="input" type="text" name="ingredient0" onChange={handleChangeIngredients}></input>
                         <button onClick={handleAddIngredients} className="hover:scale-105">
                             <BsFillPlusSquareFill size={"35px"}/>
                         </button>
                     </div>
-                    {ingredients.map((ingredient, index) => 
-                        <div className="flex space-x-4 items-center">
-                        <input className="input" type="text" name={`ingredient${index}`} onChange={handleChangeIngredients}></input>
-                        <button onClick={handleRemoveIngredients} className="hover:scale-105">
+                    {numberIngredients.map((ingredient, index) => 
+                        <div key={index} className="flex space-x-4 items-center">
+                        <input className="input" type="text" name={`ingredient${index+1}`} onChange={handleChangeIngredients}></input>
+                        <button onClick={(e) => handleRemoveIngredients(index, e)} className="hover:scale-105">
                             <BsDashSquareFill size={"35px"}/>
                         </button>
                         </div>    
@@ -143,9 +152,11 @@ function BeverageForm({addNewBeverage}) {
             <div>
                 <button className="form-button w-full" type="submit">Upload</button>
             </div>
+        { errorMessage && <p className="py-5 text-primary text-center">{errorMessage}</p> }
         </div>
         </div>
         </form>
+
     </div>
   )
 }

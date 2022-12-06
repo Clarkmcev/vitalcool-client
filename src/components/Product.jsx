@@ -19,7 +19,6 @@ function Product() {
         axios.get(`${API_URL}/user/drinks/${id}`)
         .then((response) => {
             setIsLoading(false)
-            console.log(response)
             setDrink(response.data.drink)
         })
     }
@@ -41,7 +40,7 @@ function Product() {
         <div className="inside-container w-fit bg-secondary text-fourthy mx-5 sm:mx-auto">
             {isLoading ? <LoadingSpinner/> : 
             <div className="px-10">
-                <div className="flex space-x-2 justify-center items-center">
+                <div className="flex space-x-10 justify-center items-center">
                     <div className="max-w-xl">
                         <div className="text-4xl font-semibold text-primary">
                             {drink.name}

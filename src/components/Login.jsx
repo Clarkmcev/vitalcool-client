@@ -43,7 +43,6 @@ function Login() {
   return (
     <>
     <div className="bg-secondary w-fit m-auto p-10 rounded-xl mt-10">
-    {/* {isLoading && <LoadingSpinner/>} */}
     {<form className="text-left" onSubmit={loginUser}>
         <div>
           <div className="title-in-container">Login</div>
