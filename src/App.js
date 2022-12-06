@@ -37,13 +37,11 @@ function App() {
       .post(`${API_URL}/auth/signup`, newUser)
       .then((response) => {
         navigate("/signup/success");
-        // navigate("/login");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
-    // navigate("/signup/success");
     navigate("/signup");
   };
 

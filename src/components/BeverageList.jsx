@@ -47,9 +47,10 @@ function BeverageList() {
               <div className="filter-section">
                 <input className="input search w-96 text-primary" placeholder='Search ...' value={searchField} onChange={(event) => searchFunction(event.target.value)}/>
                 <select value={filter} onChange={(e)=>setFilter(e.target.value)}>
-                  <option value="Soft">Soft drinks</option>
-                  <option value="Liquor">Liquor & Spirits</option>
-                  <option value="Undistilled">Undistilled</option>
+                  <option value="Rum">Rum</option>
+                  <option value="Whiskey">Whiskey</option>
+                  <option value="Gin">Gin</option>
+                  <option value="Vodka">Vodka</option>
                   </select>
               </div>
               <hr className="bg-primary mx-10"/>
