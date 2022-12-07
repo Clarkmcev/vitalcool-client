@@ -112,6 +112,7 @@ function AuthProviderWrapper(props) {
         setSearchField,
         errorMessage,
         setErrorMessage,
+        getAllBeverage
       }}
     >
       {props.children}

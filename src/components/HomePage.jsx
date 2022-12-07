@@ -126,8 +126,7 @@ function HomePage() {
           <div className="inside-container-home1 mx-auto">
             <div>Login now!</div>
             <button onClick={()=>{navigate("login")}} className="form-button relative mx-auto">Login</button>
-            <div>No account? register right now</div>
-            <button onClick={()=>{navigate("signup")}} className="form-button relative mx-auto">Register</button>
+            <div>No account? <button onClick={()=>{navigate("signup")}} className="hover:underline">register</button> right now</div>
           </div>
          </div>
         <div>

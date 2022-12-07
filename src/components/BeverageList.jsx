@@ -3,6 +3,7 @@ import { AuthContext } from "../context/auth.context";
 import uuid from 'react-uuid';
 import LoadingSpinner from './LoadingSpinner';
 import { Link } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 
 function BeverageList() {
     const { user, basket, setBasket, beverage, isLoggedIn, isLoading, searchField, setSearchField } = useContext(AuthContext);
@@ -10,6 +11,7 @@ function BeverageList() {
 
       const addBeverageToBasket = (idUser, elem) => {
         setBasket([...basket,elem])
+        toast('Added to Basket')
       }
 
     var formatter = new Intl.NumberFormat("en-US", {

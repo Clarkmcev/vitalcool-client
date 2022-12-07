@@ -81,9 +81,9 @@ function BeverageForm({addNewBeverage}) {
       }, [])
 
   return (
-    <div className="bg-secondary rounded-2xl text-primary shadow-md p-5 w-fit mx-10">
+    <div className="inside-container p-5">
         <form className="m-auto" onSubmit={(e)=>addNewBeverage(e, newBeverage)} >
-            <p className="text-3xl font-semibold pb-5 text-center">
+            <p className="text-3xl font-semibold pb-5 text-center text-primary">
                 New product
             </p>
     <div className="flex space-x-10 px-5">
@@ -131,14 +131,14 @@ function BeverageForm({addNewBeverage}) {
                     <label className="text-fourthy">Ingredients</label>
                     <div className="flex space-x-4 items-center">
                     <input className="input" type="text" name="ingredient0" onChange={handleChangeIngredients}></input>
-                        <button onClick={handleAddIngredients} className="hover:scale-105">
+                        <button onClick={handleAddIngredients} className="hover:scale-105 text-primary">
                             <BsFillPlusSquareFill size={"35px"}/>
                         </button>
                     </div>
                     {numberIngredients.map((ingredient, index) => 
                         <div key={index} className="flex space-x-4 items-center">
                         <input className="input" type="text" name={`ingredient${index+1}`} onChange={handleChangeIngredients}></input>
-                        <button onClick={(e) => handleRemoveIngredients(index, e)} className="hover:scale-105">
+                        <button onClick={(e) => handleRemoveIngredients(index, e)} className="hover:scale-105 text-primary">
                             <BsDashSquareFill size={"35px"}/>
                         </button>
                         </div>    

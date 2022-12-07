@@ -35,9 +35,7 @@ function NavbarAccount() {
             }>Payments</NavLink>}/>
         </div>
         </div>
-        <div className="">
         <NavBarButtonStyle2 icon={<button className="butt-admin" onClick={logOutUserAccount}>Logout</button>}/>
-      </div>
     </div>
 
     <Outlet/>

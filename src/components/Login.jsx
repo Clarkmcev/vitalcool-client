@@ -3,7 +3,6 @@ import axios from "axios";
 import { AuthContext } from '../context/auth.context';
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from 'react';
-import LoadingSpinner from './LoadingSpinner';
 import LoadingSpinner2 from './LoadingSpinner2';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";

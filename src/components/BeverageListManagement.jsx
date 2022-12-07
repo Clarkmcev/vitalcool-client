@@ -48,7 +48,6 @@ function BeverageListManagement() {
               <th>Alcohol type</th>
               <th>Price</th>
               <th>Quantity</th>
-              {/* <th>Edit</th> */}
               </tr>
             {beverage.map((elem, index)=> 
 

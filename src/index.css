@@ -132,7 +132,7 @@
     }
 
     .subnavbar {
-        @apply flex flex-wrap ml-10 my-5
+        @apply flex flex-wrap my-5 mx-10 lg:mx-44
     }
 
     .vl {
@@ -272,11 +272,11 @@
     }
     
     .inside-container {
-        @apply bg-secondary rounded-2xl  text-ternary mx-10 py-5 mb-5 shadow-md
+        @apply bg-secondary rounded-2xl  text-ternary mx-10 lg:mx-44 py-5 mb-5 shadow-md
     }
 
     .inside-container-home1 {
-        @apply bg-ternary rounded-3xl  text-primary p-5 mb-5 text-center w-auto border-t-secondary  border-t-8 border-r-8  border-r-secondary shadow-md
+        @apply bg-ternary rounded-3xl  text-primary p-5 mb-5 text-center w-auto border-r-secondary shadow-md
     }
 
     .inside-container-home {
@@ -284,7 +284,7 @@
     }
 
     .head-title {
-        @apply text-6xl p-10 text-primary
+        @apply text-6xl mx-10 my-10 text-primary lg:mx-44
     }
 
     input {
