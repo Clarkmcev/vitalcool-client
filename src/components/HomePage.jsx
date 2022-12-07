@@ -60,18 +60,16 @@ function HomePage() {
                 </div>
             </div>
               <div className="home-2 text-primary">
-              <div className="row">
+                <div className="row">
                   <p className="title-home">Choose</p>
                   <div className="ml-20 my-5"><FaSearch size="4em"/></div>
                   <p className="font-light">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
                 </div>
-                <div className='vl2'></div>
                 <div className="row">
                   <p className="title-home">Order</p>
                   <div className="ml-20 my-5"><MdBorderColor size="4em" /></div>
                   <p className="font-light">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
                 </div>
-                <div className='vl2'></div>
                   <div className="row">
                   <p className="title-home">Drink</p>
                     <div className="ml-20 my-5"><BiHappyHeartEyes size="4em"/></div>

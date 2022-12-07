@@ -10,8 +10,6 @@ function Footer() {
       <ul>
         <li><Link to="drinks">Shop</Link></li>
         <li><Link to="about">Our story</Link></li>
-        <li><Link to="*">Careers</Link></li>
-        <li><Link to="">Services</Link></li>
       </ul>
     </div>
     <div className="ft-main-item">

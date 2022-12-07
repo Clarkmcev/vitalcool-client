@@ -52,16 +52,16 @@
     }
 
     .home-1 {
-        @apply bg-opacity-5 bg-alcool bg-cover my-0 h-28 text-primary relative
+        @apply bg-opacity-5 bg-alcool bg-cover h-14 text-primary relative
     }
 
     .catch {
-        @apply py-8 text-5xl text-primary font-thin
+        @apply text-4xl py-2 text-primary font-thin
     }
 
 
     .home-2 {
-        @apply flex flex-wrap justify-between mx-10
+        @apply flex justify-evenly mx-10 justify-center
     }
 
     .since {
