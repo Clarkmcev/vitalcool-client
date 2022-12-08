@@ -83,9 +83,9 @@ function BeverageForm({addNewBeverage}) {
   return (
     <div className="inside-container p-5">
         <form className="m-auto" onSubmit={(e)=>addNewBeverage(e, newBeverage)} >
-    <div className="flex space-x-10 px-5 justify-evenly items-center">
-        <div>
-            <p className="text-3xl font-semibold pb-5 text-primary">
+    <div className="flex space-x-10 px-5 items-center">
+        <div className="flex-1">
+            <p className="sub-title">
                 New product
             </p>
             <div>

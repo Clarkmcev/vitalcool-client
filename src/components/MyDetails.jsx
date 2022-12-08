@@ -14,7 +14,7 @@ function MyDetails() {
     <div className="inside inside-container">
       {user !==null && 
       <div>
-        <div className="text-3xl font-semibold pb-5 text-primary">
+        <div className="sub-title">
           Your details
         </div>
         <div className="flex space-x-10">

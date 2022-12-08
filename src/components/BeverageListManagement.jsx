@@ -40,6 +40,9 @@ function BeverageListManagement() {
 
   return (
     <div className="inside-container">
+            <p className="sub-title ml-10 pb-0">
+                My products
+            </p>
         <div className="flex flex-col m-10">
             <table className="w-full">
             <tbody>

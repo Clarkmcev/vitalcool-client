@@ -270,6 +270,10 @@
     .form-label {
         @apply text-sm mb-2 w-11
     }
+
+    .sub-title {
+        @apply text-3xl font-semibold py-5 text-fourthy 
+    }
     
     .inside-container {
         @apply bg-secondary rounded-2xl  text-ternary mx-10 lg:mx-44 py-5 mb-5 shadow-md

@@ -30,6 +30,9 @@ function OrderList() {
 
   return (
     <div className="inside-container">
+            <p className="sub-title ml-10">
+                Orders
+            </p>
         <div className="order-container-pay">
         <table className="w-full">
         <tbody>

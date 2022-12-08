@@ -3,7 +3,7 @@ import React from 'react'
 function MyPayments() {
   return (
     <div className="inside inside-container">
-        <div className="text-3xl font-semibold pb-5 text-primary">
+        <div className="sub-title">
           Your payments
         </div>
       <div>You don't have any payment methods yet</div>
