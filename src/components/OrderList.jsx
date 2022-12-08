@@ -33,7 +33,7 @@ function OrderList() {
         <div className="order-container-pay">
         <table className="w-full">
         <tbody>
-          <tr className="w-full bg-primary text-fourthy font-thin px-5 rounded-t-3xl m-b-0 ">
+          <tr className="w-full bg-primary text-fourthy font-thin px-5 rounded-t-3xl">
             <th>Order ID</th>
             <th>Price</th>
             <th>Customer</th>
@@ -41,7 +41,7 @@ function OrderList() {
           </tr>
           {allOrders.found.map((order) => {
               return (
-              <tr key={uuid()} className="text-primary bg-ternary">
+              <tr key={uuid()} className="bg-ternary">
                 <th className="font-thin">Order {order.orderId}</th>
                 <th className="font-thin">{formatter.format(order.totalPrice)}</th>
                 <th className="font-thin">{order.user?.firstName} {order.user?.lastName}</th>

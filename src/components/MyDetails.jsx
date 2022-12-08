@@ -13,11 +13,25 @@ function MyDetails() {
     <>
     <div className="inside inside-container">
       {user !==null && 
-      <>
-      <div>{user.firstName} {user.lastName}</div>
-      <div>{user.address}</div>
-      <div>{user.town}</div>
-      </>}
+      <div>
+        <div className="text-3xl font-semibold pb-5 text-primary">
+          Your details
+        </div>
+        <div className="flex space-x-10">
+          <div className="text-primary">
+            <div>Name</div>
+            <div>Address</div>
+            <div>Town</div>
+            <div>Email</div>
+          </div>
+          <div>
+            <div>{user.firstName} {user.lastName}</div>
+            <div>{user.address}</div>
+            <div>{user.town}</div>
+            <div>{user.email}</div>
+          </div>
+        </div>
+      </div>}
       <button className="form-button my-10">Edit</button>
     </div>
       </>

@@ -3,15 +3,20 @@ import { AuthContext } from "../context/auth.context";
 import uuid from 'react-uuid';
 import LoadingSpinner from './LoadingSpinner';
 import { Link } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
 
 function BeverageList() {
     const { user, basket, setBasket, beverage, isLoggedIn, isLoading, searchField, setSearchField } = useContext(AuthContext);
     const [filter, setFilter] = useState('Soft')
 
       const addBeverageToBasket = (idUser, elem) => {
-        setBasket([...basket,elem])
-        toast('Added to Basket')
+        if (basket.includes(elem)) {
+          elem.number ++
+          const arr = [...basket]
+          setBasket([...arr])
+        } else {
+          elem.number = 1
+          setBasket([...basket,elem])
+        }
       }
 
     var formatter = new Intl.NumberFormat("en-US", {

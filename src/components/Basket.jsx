@@ -3,14 +3,28 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import uuid from 'react-uuid';
 import { FaWindowClose } from 'react-icons/fa';
+import { BsDashSquareFill, BsFillPlusSquareFill } from 'react-icons/bs';
 
 function Basket() {
     const { user, basket, setBasket, setShowBasket, showBasket } = useContext(AuthContext);
 
-    const removeItem = (id) => { 
-        let index = basket.map(function(e) { return e._id; }).indexOf(id);
-        basket.splice(index,1);
-        setBasket([...basket]);
+    const removeItem = (elem) => {
+      if (elem.number === 1) {
+        const index = basket.indexOf(elem)
+        const arr = [...basket]
+        arr.splice(index, 1)
+        setBasket([...arr])
+      } else {
+        elem.number --
+        const arr = [...basket]
+        setBasket([...arr])
+      }
+    }
+
+    const addItem = (elem) => {
+      elem.number ++
+      const arr = [...basket]
+      setBasket([...arr])
     }
 
     var formatter = new Intl.NumberFormat("en-US", {
@@ -25,7 +39,7 @@ function Basket() {
         }
 
         try {
-            let n = formatter.format(basket.reduce((a,b) =>{ return a + b.price},0));
+            let n = formatter.format(basket.reduce((a,b) =>{ return a + b.price * b.number},0));
             return <div>{n}</div>
         } catch(err) {
         }
@@ -38,21 +52,20 @@ function Basket() {
       if (basket.length === 0) {
         return <></>
       }
-      const str = '  ';
+
   return (
     <div className="basket-container absolute">
-        {/* {user && <div>Connected as {user.firstName}</div>} */}
-        {/* {basket.length > 0 ? <><div>{basket.length} Items in basket</div></> : null} */}
-        
-        <div className='my-5 text-primary title ml-2 '>Your basket <button onClick={()=>setShowBasket(!showBasket)}><FaWindowClose className="cross" size="2rem"/></button></div>
+        <div className='my-5 text-primary title ml-2 '>Your basket<button onClick={()=>setShowBasket(!showBasket)}><FaWindowClose className="cross" size="2rem"/></button></div>
         <hr/>
 
         <div>{basket.map((elem) =>  
             <div key={uuid()} className="order-row text-left">
-              <div className="w-32">{elem.name}</div>
-              <div className="w-32">x1</div>
-              <div className="w-32">{formatter.format(elem.price)}</div>
-              <div><ButtonStyleRemove butt={<button onClick={()=> {removeItem(elem._id)}}>Remove</button>}/></div>
+              <div className="w-32">{elem.name}</div> 
+              <div className="w-32">{formatter.format(elem.price * elem.number)}</div>
+
+              <button className="text-primary hover:scale-105" onClick={()=> {removeItem(elem)}}><BsDashSquareFill size={"32px"}/></button>
+              <p>{elem.number}</p>
+              <button className="text-primary  hover:scale-105" onClick={()=> {addItem(elem)}}><BsFillPlusSquareFill size={"32px"}/></button>
             </div>)}
         </div>
         <hr/>
@@ -60,10 +73,6 @@ function Basket() {
         
     </div>
   )
-}
-
-const ButtonStyleRemove = ({butt}) => {
-  return <div className="butt-remove">{butt}</div>
 }
 
 const ButtonStyleOrder = ({butt}) => {

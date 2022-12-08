@@ -83,24 +83,11 @@ function BeverageForm({addNewBeverage}) {
   return (
     <div className="inside-container p-5">
         <form className="m-auto" onSubmit={(e)=>addNewBeverage(e, newBeverage)} >
-            <p className="text-3xl font-semibold pb-5 text-center text-primary">
+    <div className="flex space-x-10 px-5 justify-evenly items-center">
+        <div>
+            <p className="text-3xl font-semibold pb-5 text-primary">
                 New product
             </p>
-    <div className="flex space-x-10 px-5">
-        <div className="">
-            <div className="flex flex-col items-center max-w-xl">
-                <div className="h-fit bg-ternary overflow-hidden p-5 rounded-2xl my-5">
-                    {!imageUrl ? 
-                    <img src={imgPng} alt="" className="object-contain"/> :
-                    <img src={imageUrl} alt="" className="object-contain"/>}
-                </div>
-                    <div className="flex flex-col">
-                        <label className=" text-fourthy">Image upload</label>
-                        <input className="w-fu" type="file" name="imageUrl" onChange={(e)=>{handleFileUpload(e)}}></input>
-                    </div>
-            </div>
-        </div>
-        <div>
             <div>
                 <label className="text-fourthy">Product name</label>
                 <input className="input" type="text" name="name" onChange={handleChange}></input>
@@ -153,6 +140,19 @@ function BeverageForm({addNewBeverage}) {
                 <button className="form-button w-full" type="submit">Upload</button>
             </div>
         { errorMessage && <p className="py-5 text-primary text-center">{errorMessage}</p> }
+        </div>
+        <div className="">
+            <div className="flex flex-col items-center max-w-xl">
+                <div className="h-fit sm:w-96 bg-ternary overflow-hidden p-5 rounded-2xl my-5">
+                    {!imageUrl ? 
+                    <img src={imgPng} alt="" className="object-contain"/> :
+                    <img src={imageUrl} alt="" className="object-contain"/>}
+                </div>
+                    <div className="flex flex-col">
+                        <label className="text-fourthy">Image upload</label>
+                        <input className="w-fu" type="file" name="imageUrl" onChange={(e)=>{handleFileUpload(e)}}></input>
+                    </div>
+            </div>
         </div>
         </div>
         </form>

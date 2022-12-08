@@ -74,8 +74,4 @@ function BeverageListManagement() {
   )
 }
 
-const ButtonStyle = ({butt}) => {
-  return <div className="butt">{butt}</div>
-}
-
 export default BeverageListManagement

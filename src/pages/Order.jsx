@@ -3,11 +3,12 @@ import { AuthContext } from "../context/auth.context";
 import uuid from 'react-uuid';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { BsDashSquareFill, BsFillPlusSquareFill } from 'react-icons/bs';
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 function Order() {
-  const { user, basket, setBasket, setAllOrders, allOrders } = useContext(AuthContext);
+  const { user, basket, setBasket, setAllOrders } = useContext(AuthContext);
   const navigate = useNavigate();
 
   var formatter = new Intl.NumberFormat("en-US", {
@@ -15,10 +16,23 @@ function Order() {
     currency: "EUR",
   });
 
-  const removeItem = (id) => { 
-    let index = basket.map(function(e) { return e._id; }).indexOf(id);
-    basket.splice(index,1);
-    setBasket([...basket]);
+  const removeItem = (elem) => { 
+    if (elem.number === 1) {
+      const index = basket.indexOf(elem)
+      const arr = [...basket]
+      arr.splice(index, 1)
+      setBasket([...arr])
+    } else {
+      elem.number --
+      const arr = [...basket]
+      setBasket([...arr])
+    }
+}
+
+const addItem = (elem) => {
+  elem.number ++
+  const arr = [...basket]
+  setBasket([...arr])
 }
 
   const getAllOrders = () => {
@@ -32,7 +46,7 @@ function Order() {
 
   const addNewOrder = (basket, idUser) => {
     let sumTot = basket.reduce((a,b) => {
-      return a + b.price
+      return a + b.price * b.number
     },0);
 
     const ordersId = basket.map((elem)=>
@@ -43,7 +57,6 @@ function Order() {
     .then((elem) => {
       
       getAllOrders();
-      console.log(allOrders);
     })
     .catch((err) => console.log(err))
     setBasket([]);
@@ -57,7 +70,7 @@ function Order() {
     }
 
     try {
-        let n = formatter.format(basket.reduce((a,b) =>{ return a + b.price},0));
+        let n = formatter.format(basket.reduce((a,b) =>{ return a + b.price * b.number},0));
         return <>{n}</>
     } catch(err) {
     }
@@ -67,31 +80,40 @@ function Order() {
   },[])
 
   return (
-    <div className="order-container-pay">
-      <h1 className="title">Your order</h1>
-      <hr/>
+    <>
+    <h1 className="head-title">Your order</h1>
+    <div className="inside-container">
+    <div className="m-10">
+      <table className="w-full">
+        <tbody>
+          <tr className="bg-primary text-fourthy font-thin px-5 rounded-t-3xl">
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+
       {basket.map((elem) =>  
-            <div key={uuid()} className="order-row-order text-primary">
-              <div className="w-32">{elem.name} <div className="text-secondary text-xs">{elem.quantity} cl</div></div>
-              <div className="w-32">{formatter.format(elem.price)}</div>
-              <div className="w-32">x1</div>
-              <div><ButtonStyleRemove butt={<button onClick={()=> {removeItem(elem._id)}}>Remove</button>}/></div>
-            </div>)}
-            <hr/>
-            <div className="flex flex-wrap justify-between">
-                <div className="my-5">Total : {sumTot()}</div>
-                <ButtonStyleOrder butt={<button onClick={() => addNewOrder(basket, user._id)}>Confirm and pay</button>}/>
-            </div>
+            <tr key={uuid()} className="text-primary bg-ternary">
+              <th className="font-thin">{elem.name} <div className="text-secondary text-xs">{elem.quantity} cl</div></th>
+              <th className="font-thin">{formatter.format(elem.price)}</th>
+              <div className="flex items-center justify-center space-x-10 m-5">
+                <button className="text-primary hover:scale-105" onClick={()=> {removeItem(elem)}}><BsDashSquareFill size={"32px"}/></button>
+                <p>{elem.number}</p>
+                <button className="text-primary  hover:scale-105" onClick={()=> {addItem(elem)}}><BsFillPlusSquareFill size={"32px"}/></button>
+              </div>
+            </tr>)}
+            <tr className="text-primary bg-ternary">
+              <th></th>
+              <th></th>
+              <th>Total: {sumTot()}</th>
+            </tr>
+        </tbody>
+        </table>
+        <button className="butt-admin my-5" onClick={() => addNewOrder(basket, user._id)}>Confirm and pay</button>
     </div>
+    </div>
+    </>
   )
-}
-
-const ButtonStyleRemove = ({butt}) => {
-  return <div className="butt-remove">{butt}</div>
-}
-
-const ButtonStyleOrder = ({butt}) => {
-  return <div className="butt-oder-and-pay">{butt}</div>
 }
 
 export default Order;

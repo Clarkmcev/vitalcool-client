@@ -23,8 +23,13 @@ function Product() {
         })
     }
 
-    const addBeverageToBasket = (idUser, elem) => {
-        setBasket([...basket,elem])
+    const addBeverageToBasket = (idUser, drink) => {
+        if (basket.includes(drink)) {
+            drink.number ++
+        } else {
+            drink.number = 1
+          setBasket([...basket,drink])
+        }
       }
 
     useEffect(() => {
