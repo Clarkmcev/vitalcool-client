@@ -41,7 +41,7 @@ function MyOrders() {
   return (<>
     <div className="inside-container">
         <div className="order-container-pay">
-            <p className="sub-title pb-10">
+            <p className="sub-title">
                 My orders
             </p>
         <table className="w-full">
